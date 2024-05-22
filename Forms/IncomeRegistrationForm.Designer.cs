@@ -59,6 +59,7 @@
             txtAmount.Name = "txtAmount";
             txtAmount.Size = new Size(474, 30);
             txtAmount.TabIndex = 1;
+            txtAmount.TextAlign = HorizontalAlignment.Center;
             // 
             // txtDescription
             // 
