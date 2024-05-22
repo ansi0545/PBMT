@@ -1,4 +1,4 @@
-﻿namespace Personal_budget_management_tool
+﻿namespace Personal_budget_management_tool.Forms
 {
     partial class SavingsGoalsForm
     {

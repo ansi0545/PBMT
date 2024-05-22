@@ -1,3 +1,5 @@
+using Personal_budget_management_tool.Forms;
+
 namespace Personal_budget_management_tool
 {
     internal static class Program

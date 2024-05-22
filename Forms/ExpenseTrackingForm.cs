@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Personal_budget_management_tool
+namespace Personal_budget_management_tool.Forms
 {
     public partial class ExpenseTrackingForm : Form
     {
