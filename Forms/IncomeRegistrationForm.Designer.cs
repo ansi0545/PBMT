@@ -10,6 +10,9 @@
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblAmount;
+        private System.Windows.Forms.Label lblDescription;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -36,37 +39,71 @@
             txtAmount = new TextBox();
             txtDescription = new TextBox();
             btnSave = new Button();
+            lblDate = new Label();
+            lblAmount = new Label();
+            lblDescription = new Label();
             SuspendLayout();
             // 
             // dtpDate
             // 
-            dtpDate.Location = new Point(10, 12);
+            dtpDate.Font = new Font("Courier New", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtpDate.Location = new Point(192, 12);
             dtpDate.Name = "dtpDate";
-            dtpDate.Size = new Size(361, 31);
+            dtpDate.Size = new Size(474, 30);
             dtpDate.TabIndex = 0;
             // 
             // txtAmount
             // 
-            txtAmount.Location = new Point(10, 49);
+            txtAmount.Font = new Font("Courier New", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAmount.Location = new Point(192, 49);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(361, 31);
+            txtAmount.Size = new Size(474, 30);
             txtAmount.TabIndex = 1;
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(10, 86);
+            txtDescription.Location = new Point(192, 86);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(361, 31);
+            txtDescription.Size = new Size(474, 31);
             txtDescription.TabIndex = 2;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(10, 132);
+            btnSave.Location = new Point(252, 123);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(361, 50);
             btnSave.TabIndex = 3;
             btnSave.Text = "Save";
             btnSave.Click += btnSave_Click;
+            // 
+            // lblDate
+            // 
+            lblDate.Font = new Font("Courier New", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDate.Location = new Point(50, 12);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(100, 31);
+            lblDate.TabIndex = 4;
+            lblDate.Text = "Date";
+            // 
+            // lblAmount
+            // 
+            lblAmount.AutoSize = true;
+            lblAmount.Font = new Font("Courier New", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAmount.Location = new Point(50, 49);
+            lblAmount.Name = "lblAmount";
+            lblAmount.Size = new Size(130, 22);
+            lblAmount.TabIndex = 5;
+            lblAmount.Text = "Add Amount";
+            // 
+            // lblDescription
+            // 
+            lblDescription.AutoSize = true;
+            lblDescription.Font = new Font("Courier New", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDescription.Location = new Point(50, 86);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(142, 22);
+            lblDescription.TabIndex = 6;
+            lblDescription.Text = "Description";
             // 
             // IncomeRegistrationForm
             // 
@@ -77,6 +114,9 @@
             Controls.Add(txtAmount);
             Controls.Add(txtDescription);
             Controls.Add(btnSave);
+            Controls.Add(lblDate);
+            Controls.Add(lblAmount);
+            Controls.Add(lblDescription);
             Name = "IncomeRegistrationForm";
             Text = "IncomeRegistrationForm";
             Load += IncomeRegistrationForm_Load;
