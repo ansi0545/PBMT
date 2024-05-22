@@ -14,12 +14,14 @@ namespace Personal_budget_management_tool
 
         private void btnExpenseTracking_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Expense Tracking button clicked");
+            ExpenseTrackingForm expenseTrackingForm = new ExpenseTrackingForm();
+            expenseTrackingForm.Show();
         }
 
         private void btnSavingsGoals_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Savings Goals button clicked");
+            SavingsGoalsForm savingsGoalsForm = new SavingsGoalsForm();
+            savingsGoalsForm.Show();
         }
 
         private void btnReports_Click(object sender, EventArgs e)
@@ -37,5 +39,6 @@ namespace Personal_budget_management_tool
             IncomeRegistrationForm incomeRegistrationForm = new IncomeRegistrationForm();
             incomeRegistrationForm.Show();
         }
+
     }
 }
