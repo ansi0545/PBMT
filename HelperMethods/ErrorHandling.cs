@@ -20,5 +20,31 @@ namespace Personal_budget_management_tool.HelperMethods
                 return false;
             }
         }
+        public static bool IsPositiveNumber(double number)
+        {
+            if (number > 0)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid positive number.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        public static bool IsValidDescription(string description)
+        {
+            if (!string.IsNullOrEmpty(description))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Description cannot be null or empty.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
+    
+
 }
