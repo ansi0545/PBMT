@@ -1,7 +1,9 @@
 namespace Personal_budget_management_tool.Forms
 {
+
     public partial class MainForm : Form
     {
+        private User currentUser;
         public MainForm()
         {
             InitializeComponent();
@@ -10,6 +12,13 @@ namespace Personal_budget_management_tool.Forms
         private void UpdateFinancialSummary()
         {
             lblFinancialSummary.Text = "Financial Summary: Here will be the user's current financial situation.";
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            currentUser = new User(); // Initialize the currentUser variable with a new User instance
+            LoginForm loginForm = new LoginForm(currentUser);
+            loginForm.Show();
         }
 
         private void btnIncomeRegistration_Click(object sender, EventArgs e)
@@ -41,8 +50,5 @@ namespace Personal_budget_management_tool.Forms
             RemindersForm remindersForm = new RemindersForm();
             remindersForm.Show();
         }
-
-        
-
     }
 }

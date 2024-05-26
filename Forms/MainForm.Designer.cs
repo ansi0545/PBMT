@@ -41,11 +41,12 @@
             btnReports = new Button();
             btnReminders = new Button();
             lblFinancialSummary = new Label();
+            btnLogin = new Button();
             SuspendLayout();
             // 
             // btnIncomeRegistration
             // 
-            btnIncomeRegistration.Location = new Point(10, 10);
+            btnIncomeRegistration.Location = new Point(12, 46);
             btnIncomeRegistration.Name = "btnIncomeRegistration";
             btnIncomeRegistration.Size = new Size(200, 50);
             btnIncomeRegistration.TabIndex = 0;
@@ -54,7 +55,7 @@
             // 
             // btnExpenseTracking
             // 
-            btnExpenseTracking.Location = new Point(10, 70);
+            btnExpenseTracking.Location = new Point(287, 46);
             btnExpenseTracking.Name = "btnExpenseTracking";
             btnExpenseTracking.Size = new Size(200, 50);
             btnExpenseTracking.TabIndex = 1;
@@ -63,7 +64,7 @@
             // 
             // btnSavingsGoals
             // 
-            btnSavingsGoals.Location = new Point(10, 130);
+            btnSavingsGoals.Location = new Point(582, 46);
             btnSavingsGoals.Name = "btnSavingsGoals";
             btnSavingsGoals.Size = new Size(200, 50);
             btnSavingsGoals.TabIndex = 2;
@@ -72,7 +73,7 @@
             // 
             // btnReports
             // 
-            btnReports.Location = new Point(10, 190);
+            btnReports.Location = new Point(889, 46);
             btnReports.Name = "btnReports";
             btnReports.Size = new Size(200, 50);
             btnReports.TabIndex = 3;
@@ -81,7 +82,7 @@
             // 
             // btnReminders
             // 
-            btnReminders.Location = new Point(10, 250);
+            btnReminders.Location = new Point(1192, 46);
             btnReminders.Name = "btnReminders";
             btnReminders.Size = new Size(200, 50);
             btnReminders.TabIndex = 4;
@@ -90,17 +91,28 @@
             // 
             // lblFinancialSummary
             // 
-            lblFinancialSummary.Location = new Point(363, 0);
+            lblFinancialSummary.Location = new Point(424, 287);
             lblFinancialSummary.Name = "lblFinancialSummary";
             lblFinancialSummary.Size = new Size(600, 300);
             lblFinancialSummary.TabIndex = 5;
             lblFinancialSummary.Text = "Financial Summary: ";
+            // 
+            // btnLogin
+            // 
+            btnLogin = new Button();
+            btnLogin.Location = new Point(582, 178);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(200, 50);
+            btnLogin.TabIndex = 6;
+            btnLogin.Text = "Login";
+            btnLogin.Click += btnLogin_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1426, 663);
+            Controls.Add(btnLogin);
             Controls.Add(btnIncomeRegistration);
             Controls.Add(btnExpenseTracking);
             Controls.Add(btnSavingsGoals);
@@ -111,6 +123,8 @@
             Text = "Personal budget management tool";
             ResumeLayout(false);
         }
+
+        private Button btnLogin;
     }
 
 
