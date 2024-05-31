@@ -1,14 +1,17 @@
 namespace Personal_budget_management_tool.Forms
 {
-
     public partial class MainForm : Form
     {
         private User currentUser;
+        private BudgetApp budgetApp; // Add this line
+
         public MainForm()
         {
             InitializeComponent();
+            budgetApp = new BudgetApp(); // Initialize the budgetApp variable with a new BudgetApp instance
             UpdateFinancialSummary();
         }
+
         private void UpdateFinancialSummary()
         {
             lblFinancialSummary.Text = "Financial Summary: Here will be the user's current financial situation.";
@@ -17,7 +20,7 @@ namespace Personal_budget_management_tool.Forms
         private void btnLogin_Click(object sender, EventArgs e)
         {
             currentUser = new User(); // Initialize the currentUser variable with a new User instance
-            LoginForm loginForm = new LoginForm(currentUser);
+            LoginForm loginForm = new LoginForm(budgetApp); // Pass budgetApp instead of currentUser
             loginForm.Show();
         }
 
