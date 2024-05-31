@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Personal_budget_management_tool
 {
     internal class Expense
@@ -11,6 +6,37 @@ namespace Personal_budget_management_tool
         private string category;
         private double amount;
         private DateTime date;
+        private string description;
+
+        public DateTime Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+
+        public double Amount
+        {
+            get { return amount; }
+            set
+            {
+                if (HelperMethods.ErrorHandling.IsPositiveNumber(value))
+                {
+                    amount = value;
+                }
+            }
+        }
+
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                if (HelperMethods.ErrorHandling.IsValidDescription(value))
+                {
+                    description = value;
+                }
+            }
+        }
 
         public string GetCategory() { return category; }
         public void SetCategory(string value) { category = value; }

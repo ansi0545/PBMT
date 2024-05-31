@@ -14,14 +14,13 @@ namespace Personal_budget_management_tool.Forms
             string inputUsername = txtUsername.Text;
             string inputPassword = txtPassword.Text;
 
-            bool loginSuccessful = currentUser.Login(inputUsername, inputPassword);
-
-            if (loginSuccessful)
+            try
             {
+                currentUser.Login(inputUsername, inputPassword);
                 MessageBox.Show("Login successful!");
                 this.Close();
             }
-            else
+            catch (Exception)
             {
                 MessageBox.Show("Incorrect username or password.");
             }
