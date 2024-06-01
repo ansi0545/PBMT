@@ -4,10 +4,12 @@ namespace Personal_budget_management_tool.Forms
 {
     public partial class IncomeRegistrationForm : Form
     {
+        private BudgetApp budgetApp;
         private List<Income> incomes = new List<Income>();
-        public IncomeRegistrationForm()
+        public IncomeRegistrationForm(BudgetApp budgetApp)
         {
             InitializeComponent();
+            this.budgetApp = budgetApp;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {

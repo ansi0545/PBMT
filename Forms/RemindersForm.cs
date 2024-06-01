@@ -2,9 +2,11 @@
 {
     public partial class RemindersForm : Form
     {
-        public RemindersForm()
+        private BudgetApp budgetApp;
+        public RemindersForm(BudgetApp budgetApp)
         {
             InitializeComponent();
+            this.budgetApp = budgetApp;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

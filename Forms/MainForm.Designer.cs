@@ -25,6 +25,16 @@
         private System.Windows.Forms.Button btnSavingsGoals;
         private System.Windows.Forms.Button btnReports;
         private System.Windows.Forms.Button btnReminders;
+        private TextBox txtUsername;
+        private TextBox txtPassword;
+        private TextBox txtNewUsername;
+        private TextBox txtNewPassword;
+        private Button btnSubmit;
+        private Button btnRegister;
+        private Label lblUsername;
+        private Label lblPassword;
+        private Label lblNewUsername;
+        private Label lblNewPassword;
         private System.Windows.Forms.Label lblFinancialSummary;
 
         #region Windows Form Designer generated code
@@ -42,6 +52,16 @@
             btnReminders = new Button();
             lblFinancialSummary = new Label();
             btnLogin = new Button();
+            btnSubmit = new Button();
+            btnRegister = new Button();
+            txtUsername = new TextBox();
+            txtPassword = new TextBox();
+            txtNewUsername = new TextBox();
+            txtNewPassword = new TextBox();
+            lblUsername = new Label();
+            lblPassword = new Label();
+            lblNewUsername = new Label();
+            lblNewPassword = new Label();
             SuspendLayout();
             // 
             // btnIncomeRegistration

@@ -10,10 +10,12 @@ namespace Personal_budget_management_tool.Forms
         private Label lblTimeframe;
         private TextBox txtTimeframe;
         private Button btnSave;
+        private BudgetApp budgetApp;
 
-        public SavingsGoalsForm()
+        public SavingsGoalsForm(BudgetApp budgetApp)
         {
             InitializeComponent();
+            this.budgetApp = budgetApp;
 
         }
 

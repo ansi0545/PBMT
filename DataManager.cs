@@ -1,33 +1,42 @@
-﻿// DataManager.cs
-using System.Text.Json;
+﻿using Personal_budget_management_tool;
 
-namespace Personal_budget_management_tool
+public class DataManager
 {
-    public class DataManager
+    public string FilePath { get; set; }
+
+    public List<User> LoadData()
     {
-        private string filePath;
+        List<User> users = new List<User>();
 
-        public string FilePath 
-        { 
-            get { return filePath; } 
-            set { filePath = value; } 
-        }
-
-        public List<User> LoadData() 
+        if (File.Exists(FilePath))
         {
-            if (!File.Exists(filePath))
+            using (StreamReader reader = new StreamReader(FilePath))
             {
-                return new List<User>();
-            }
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    // Assuming each user is stored in a separate line
+                    // And the properties of the user are separated by a comma
+                    string[] properties = line.Split(',');
 
-            var jsonData = File.ReadAllText(filePath);
-            return JsonSerializer.Deserialize<List<User>>(jsonData);
+                    User user = new User(properties[0], properties[1]);
+                    users.Add(user);
+                }
+            }
         }
 
-        public void SaveData(List<User> users) 
+        return users;
+    }
+
+    public void SaveData(List<User> users)
+    {
+        using (StreamWriter writer = new StreamWriter(FilePath))
         {
-            var jsonData = JsonSerializer.Serialize(users);
-            File.WriteAllText(filePath, jsonData);
+            foreach (User user in users)
+            {
+                // Assuming the properties of the user are separated by a comma
+                writer.WriteLine($"{user.Username},{user.Password}");
+            }
         }
     }
 }

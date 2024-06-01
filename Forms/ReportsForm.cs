@@ -4,9 +4,11 @@ namespace Personal_budget_management_tool.Forms
 {
     public partial class ReportsForm : Form
     {
-        public ReportsForm()
+        private BudgetApp budgetApp;
+        public ReportsForm(BudgetApp budgetApp)
         {
             InitializeComponent();
+            this.budgetApp = budgetApp;
         }
 
         private void btnSort_Click(object sender, EventArgs e)

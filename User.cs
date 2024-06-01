@@ -37,6 +37,14 @@ namespace Personal_budget_management_tool
         internal List<Income> Incomes { get; set; }
         internal List<Expense> Expenses { get; set; } = new List<Expense>();
 
+        // Added constructor
+        public User(string username, string password)
+        {
+            this.username = username;
+            this.password = password;
+            this.budget = new BudgetApp();
+        }
+
         public bool Login(string inputUsername, string inputPassword)
         {
             if (inputUsername == Username && ComputeHash(inputPassword + Salt) == Password)
@@ -53,7 +61,6 @@ namespace Personal_budget_management_tool
 
         public void Register(string username, string password, BudgetApp budgetApp)
         {
-
             Username = username;
             Salt = GenerateSalt();
             Password = ComputeHash(password + Salt);
