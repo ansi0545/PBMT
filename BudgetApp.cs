@@ -67,7 +67,7 @@ namespace Personal_budget_management_tool
             CurrentUser.Expenses.Add(expense);
         }
 
-        public void LoginUser(string username, string password)
+        public bool LoginUser(string username, string password)
         {
             // Check if a user with the provided username exists
             foreach (User user in Users)
@@ -76,18 +76,18 @@ namespace Personal_budget_management_tool
                 {
                     // If such a user is found, set the CurrentUser to that user
                     CurrentUser = user;
-                    return;
+                    return true;
                 }
             }
-
+        
             // If no user is found, throw an exception
-            throw new Exception("User not found");
+            return false;
         }
 
-        private void StartApp() { /*...*/ }
-        private void LoginUser(string username) { /*...*/ }
-        private void LogoutUser() { /*...*/ }
-        private void AddIncome(double amount) { /*...*/ }
-        private void SetSavingsGoal(double goal) { /*...*/ }
+        // private void StartApp() { /*...*/ }
+        // private void LoginUser(string username) { /*...*/ }
+        // private void LogoutUser() { /*...*/ }
+        // private void AddIncome(double amount) { /*...*/ }
+        // private void SetSavingsGoal(double goal) { /*...*/ }
     }
 }

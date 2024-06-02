@@ -20,21 +20,7 @@ namespace Personal_budget_management_tool.Forms
             lblFinancialSummary.Text = "Financial Summary: Here will be the user's current financial situation.";
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            string inputUsername = txtUsername.Text; // replace with actual username
-            string inputPassword = txtPassword.Text; // replace with actual password
-
-            try
-            {
-                budgetApp.LoginUser(inputUsername, inputPassword);
-                MessageBox.Show("Login successful!");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Incorrect username or password.");
-            }
-        }
+        
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -90,5 +76,6 @@ namespace Personal_budget_management_tool.Forms
             RemindersForm remindersForm = new RemindersForm(budgetApp); // Pass budgetApp to the form
             remindersForm.Show();
         }
+
     }
 }

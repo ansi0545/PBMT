@@ -25,8 +25,6 @@
         private System.Windows.Forms.Button btnSavingsGoals;
         private System.Windows.Forms.Button btnReports;
         private System.Windows.Forms.Button btnReminders;
-        private TextBox txtUsername;
-        private TextBox txtPassword;
         private TextBox txtNewUsername;
         private TextBox txtNewPassword;
         private Button btnSubmit;
@@ -54,8 +52,6 @@
             btnLogin = new Button();
             btnSubmit = new Button();
             btnRegister = new Button();
-            txtUsername = new TextBox();
-            txtPassword = new TextBox();
             txtNewUsername = new TextBox();
             txtNewPassword = new TextBox();
             lblUsername = new Label();
@@ -119,13 +115,70 @@
             // 
             // btnLogin
             // 
-            btnLogin = new Button();
             btnLogin.Location = new Point(582, 178);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(200, 50);
             btnLogin.TabIndex = 6;
             btnLogin.Text = "Login";
             btnLogin.Click += btnLogin_Click;
+            // 
+            // btnSubmit
+            // 
+            btnSubmit.Location = new Point(0, 0);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new Size(75, 23);
+            btnSubmit.TabIndex = 0;
+            btnSubmit.Click += btnSubmit_Click;
+            // 
+            // btnRegister
+            // 
+            btnRegister.Location = new Point(0, 0);
+            btnRegister.Name = "btnRegister";
+            btnRegister.Size = new Size(75, 23);
+            btnRegister.TabIndex = 0;
+            btnRegister.Click += btnRegister_Click;
+            // 
+            // txtNewUsername
+            // 
+            txtNewUsername.Location = new Point(0, 0);
+            txtNewUsername.Name = "txtNewUsername";
+            txtNewUsername.Size = new Size(100, 31);
+            txtNewUsername.TabIndex = 0;
+            // 
+            // txtNewPassword
+            // 
+            txtNewPassword.Location = new Point(0, 0);
+            txtNewPassword.Name = "txtNewPassword";
+            txtNewPassword.Size = new Size(100, 31);
+            txtNewPassword.TabIndex = 0;
+            // 
+            // lblUsername
+            // 
+            lblUsername.Location = new Point(0, 0);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(100, 23);
+            lblUsername.TabIndex = 0;
+            // 
+            // lblPassword
+            // 
+            lblPassword.Location = new Point(0, 0);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(100, 23);
+            lblPassword.TabIndex = 0;
+            // 
+            // lblNewUsername
+            // 
+            lblNewUsername.Location = new Point(0, 0);
+            lblNewUsername.Name = "lblNewUsername";
+            lblNewUsername.Size = new Size(100, 23);
+            lblNewUsername.TabIndex = 0;
+            // 
+            // lblNewPassword
+            // 
+            lblNewPassword.Location = new Point(0, 0);
+            lblNewPassword.Name = "lblNewPassword";
+            lblNewPassword.Size = new Size(100, 23);
+            lblNewPassword.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -139,8 +192,6 @@
             Controls.Add(btnReports);
             Controls.Add(btnReminders);
             Controls.Add(lblFinancialSummary);
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             Name = "MainForm";
             Text = "Personal budget management tool";
             ResumeLayout(false);
