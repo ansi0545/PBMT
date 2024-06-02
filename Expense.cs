@@ -1,9 +1,27 @@
 ﻿
 namespace Personal_budget_management_tool
 {
+    public enum Category
+    {
+        Beauty,
+        Clothing,
+        Education,
+        Entertainment,
+        Groceries,
+        Health,
+        Hygiene,
+        Insurance,
+        Other,
+        Petfood,
+        Petinsurance,
+        Rent,
+        Training,
+        Transportation,
+        Utilities
+    }
     internal class Expense
     {
-        private string category;
+        private Category category;
         private double amount;
         private DateTime date;
         private string description;
@@ -38,13 +56,15 @@ namespace Personal_budget_management_tool
             }
         }
 
-        public string GetCategory() { return category; }
-        public void SetCategory(string value) { category = value; }
+        public Category Category
+        {
+            get { return category; }
+            set
+            {
+                category = value;
 
-        public double GetAmount() { return amount; }
-        public void SetAmount(double value) { amount = value; }
 
-        public DateTime GetDate() { return date; }
-        public void SetDate(DateTime value) { date = value; }
+            }
+        }
     }
 }

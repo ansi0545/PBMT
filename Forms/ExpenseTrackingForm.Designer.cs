@@ -11,6 +11,10 @@
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblAmount;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Label lblCategory;
 
 
         /// <summary>
@@ -34,69 +38,101 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ExpenseTrackingForm";
-
-            dtpDate = new System.Windows.Forms.DateTimePicker();
-            txtAmount = new System.Windows.Forms.TextBox();
-            txtDescription = new System.Windows.Forms.TextBox();
-            btnSave = new System.Windows.Forms.Button();
-            cmbCategory = new System.Windows.Forms.ComboBox();
-            //
+            dtpDate = new DateTimePicker();
+            txtAmount = new TextBox();
+            txtDescription = new TextBox();
+            btnSave = new Button();
+            cmbCategory = new ComboBox();
+            SuspendLayout();
+            // 
             // dtpDate
-            //
-            dtpDate.Location = new System.Drawing.Point(10, 12);
+            // 
+            dtpDate.Location = new Point(260, 12);
             dtpDate.Name = "dtpDate";
-            dtpDate.Size = new System.Drawing.Size(361, 31);
+            dtpDate.Size = new Size(361, 31);
             dtpDate.TabIndex = 0;
             //
+            // lblAmount
+            //
+            lblAmount = new Label();
+            lblAmount.Location = new Point(130, 71);
+            lblAmount.Name = "lblAmount";
+            lblAmount.Size = new Size(120, 31);
+            lblAmount.Text = "Amount:";
+            //
+            //lblCategory
+            //
+            lblCategory = new Label();
+            lblCategory.Location = new Point(130, 208);
+            lblCategory.Name = "lblCategory";
+            lblCategory.Size = new Size(120, 31);
+            lblCategory.Text = "Category:";
+            //
+            //lblDescription
+            //
+            lblDescription = new Label();
+            lblDescription.Location = new Point(130, 134);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(120, 31);
+            lblDescription.Text = "Description:";
+            //
+            // lblDate
+            //
+            lblDate = new Label();
+            lblDate.Location = new Point(130, 12);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(120, 31);
+            lblDate.Text = "Date:";
+            // 
             // txtAmount
-            //
-            txtAmount.Location = new System.Drawing.Point(10, 49);
+            // 
+            txtAmount.Location = new Point(260, 71);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new System.Drawing.Size(361, 31);
+            txtAmount.Size = new Size(361, 31);
             txtAmount.TabIndex = 1;
-
+            // 
             // txtDescription
-            txtDescription.Location = new System.Drawing.Point(10, 86);
+            // 
+            txtDescription.Location = new Point(260, 134);
             txtDescription.Name = "txtDescription";
-            txtDescription.Size = new System.Drawing.Size(361, 31);
+            txtDescription.Size = new Size(361, 31);
             txtDescription.TabIndex = 2;
-            //
-            // cmbCategory
-            //
-            cmbCategory.Location = new System.Drawing.Point(10, 123);
-            cmbCategory.Name = "cmbCategory";
-            cmbCategory.Size = new System.Drawing.Size(361, 31);
-            cmbCategory.TabIndex = 3;
-            //
+            // 
             // btnSave
-            //
-            btnSave.Location = new System.Drawing.Point(10, 160);
+            // 
+            btnSave.Location = new Point(260, 287);
             btnSave.Name = "btnSave";
-            btnSave.Size = new System.Drawing.Size(361, 50);
+            btnSave.Size = new Size(361, 50);
             btnSave.TabIndex = 4;
             btnSave.Text = "Save";
             btnSave.Click += btnSave_Click;
-            //
+            // 
+            // cmbCategory
+            // 
+            cmbCategory.Location = new Point(260, 208);
+            cmbCategory.Name = "cmbCategory";
+            cmbCategory.Size = new Size(361, 33);
+            cmbCategory.TabIndex = 3;
+            // 
             // ExpenseTrackingForm
-            //
-            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
             Controls.Add(dtpDate);
             Controls.Add(txtAmount);
             Controls.Add(txtDescription);
             Controls.Add(cmbCategory);
             Controls.Add(btnSave);
+            Controls.Add(lblDate);
+            Controls.Add(lblAmount);
+            Controls.Add(lblDescription);
+            Controls.Add(lblCategory);
             Name = "ExpenseTrackingForm";
             Text = "ExpenseTrackingForm";
             Load += ExpenseTrackingForm_Load;
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion

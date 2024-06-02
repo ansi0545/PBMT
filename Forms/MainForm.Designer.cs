@@ -139,6 +139,8 @@
             Controls.Add(btnReports);
             Controls.Add(btnReminders);
             Controls.Add(lblFinancialSummary);
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             Name = "MainForm";
             Text = "Personal budget management tool";
             ResumeLayout(false);

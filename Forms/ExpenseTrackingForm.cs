@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Personal_budget_management_tool.Forms
+﻿namespace Personal_budget_management_tool.Forms
 {
     public partial class ExpenseTrackingForm : Form
     {
@@ -26,7 +16,11 @@ namespace Personal_budget_management_tool.Forms
 
         private void ExpenseTrackingForm_Load(object sender, EventArgs e)
         {
-            // Add your form load logic here
+            // Load categories into the ComboBox
+            foreach (var category in Enum.GetValues(typeof(Category)))
+            {
+                cmbCategory.Items.Add(category);
+            }
         }
     }
 }
