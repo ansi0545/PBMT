@@ -20,11 +20,12 @@ namespace Personal_budget_management_tool.Forms
         }
 
 
-
-
         void btnSave_Click(object sender, EventArgs e)
         {
-            btnSave.Click += btnSave_Click;
+            double goalAmount = double.Parse(txtAmount.Text);
+            DateTime desiredTimeframe = DateTime.Parse(txtTimeframe.Text);
+            budgetApp.SetSavingsGoalForCurrentUser(goalAmount, desiredTimeframe);
+            budgetApp.SaveUsers();
         }
     }
 }
