@@ -20,7 +20,14 @@ namespace Personal_budget_management_tool.Forms
             lblFinancialSummary.Text = "Financial Summary: Here will be the user's current financial situation.";
         }
 
-        
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm(budgetApp); // Pass budgetApp to the form
+            loginForm.Show();
+        }
+
+
+
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {

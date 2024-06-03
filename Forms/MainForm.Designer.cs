@@ -25,6 +25,7 @@
         private System.Windows.Forms.Button btnSavingsGoals;
         private System.Windows.Forms.Button btnReports;
         private System.Windows.Forms.Button btnReminders;
+
         private TextBox txtNewUsername;
         private TextBox txtNewPassword;
         private Button btnSubmit;
@@ -62,7 +63,7 @@
             // 
             // btnIncomeRegistration
             // 
-            btnIncomeRegistration.Location = new Point(12, 46);
+            btnIncomeRegistration.Location = new Point(287, 129);
             btnIncomeRegistration.Name = "btnIncomeRegistration";
             btnIncomeRegistration.Size = new Size(200, 50);
             btnIncomeRegistration.TabIndex = 0;
@@ -98,7 +99,7 @@
             // 
             // btnReminders
             // 
-            btnReminders.Location = new Point(1192, 46);
+            btnReminders.Location = new Point(880, 126);
             btnReminders.Name = "btnReminders";
             btnReminders.Size = new Size(200, 50);
             btnReminders.TabIndex = 4;
@@ -107,20 +108,20 @@
             // 
             // lblFinancialSummary
             // 
-            lblFinancialSummary.Location = new Point(424, 287);
+            lblFinancialSummary.Location = new Point(287, 239);
             lblFinancialSummary.Name = "lblFinancialSummary";
-            lblFinancialSummary.Size = new Size(600, 300);
+            lblFinancialSummary.Size = new Size(793, 300);
             lblFinancialSummary.TabIndex = 5;
             lblFinancialSummary.Text = "Financial Summary: ";
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(582, 178);
+            btnLogin.Location = new Point(582, 567);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(200, 50);
-            btnLogin.TabIndex = 6;
+            btnLogin.Size = new Size(200, 53);
+            btnLogin.TabIndex = 0;
             btnLogin.Text = "Login";
-            btnLogin.Click += btnLogin_Click;
+            btnLogin.Click += btnSubmit_Click;
             // 
             // btnSubmit
             // 
@@ -185,13 +186,13 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1426, 663);
-            Controls.Add(btnLogin);
             Controls.Add(btnIncomeRegistration);
             Controls.Add(btnExpenseTracking);
             Controls.Add(btnSavingsGoals);
             Controls.Add(btnReports);
             Controls.Add(btnReminders);
             Controls.Add(lblFinancialSummary);
+            Controls.Add(btnLogin);
             Name = "MainForm";
             Text = "Personal budget management tool";
             ResumeLayout(false);
