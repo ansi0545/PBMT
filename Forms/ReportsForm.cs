@@ -4,8 +4,8 @@ namespace Personal_budget_management_tool.Forms
 {
     public partial class ReportsForm : Form
     {
-        private BudgetApp budgetApp;
-        public ReportsForm(BudgetApp budgetApp)
+        private BudgetManager budgetApp;
+        public ReportsForm(BudgetManager budgetApp)
         {
             InitializeComponent();
             this.budgetApp = budgetApp;

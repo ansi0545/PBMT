@@ -6,12 +6,12 @@ namespace Personal_budget_management_tool.Forms
     public partial class MainForm : Form
     {
         private User currentUser;
-        private BudgetApp budgetApp; // Add this line
+        private BudgetManager budgetApp; // Add this line
 
         public MainForm()
         {
             InitializeComponent();
-            budgetApp = new BudgetApp(); // Initialize the budgetApp variable with a new BudgetApp instance
+            budgetApp = new BudgetManager(); // Initialize the budgetApp variable with a new BudgetManager instance
             UpdateFinancialSummary();
         }
 
@@ -24,34 +24,6 @@ namespace Personal_budget_management_tool.Forms
         {
             LoginForm loginForm = new LoginForm(budgetApp); // Pass budgetApp to the form
             loginForm.Show();
-        }
-
-
-
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            string inputUsername = txtUsername.Text;
-            string inputPassword = txtPassword.Text;
-
-            try
-            {
-                budgetApp.LoginUser(inputUsername, inputPassword);
-                MessageBox.Show("Login successful!");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Incorrect username or password.");
-            }
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            string newUsername = txtNewUsername.Text;
-            string newPassword = txtNewPassword.Text;
-
-            currentUser.Register(newUsername, newPassword);
-            MessageBox.Show("Registration successful!");
         }
 
         private void btnIncomeRegistration_Click(object sender, EventArgs e)

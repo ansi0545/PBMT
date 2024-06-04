@@ -4,9 +4,9 @@ namespace Personal_budget_management_tool.Forms
 {
     public partial class IncomeRegistrationForm : Form
     {
-        private BudgetApp budgetApp;
+        private BudgetManager budgetApp;
         private List<Income> incomes = new List<Income>();
-        public IncomeRegistrationForm(BudgetApp budgetApp)
+        public IncomeRegistrationForm(BudgetManager budgetApp)
         {
             InitializeComponent();
             this.budgetApp = budgetApp;

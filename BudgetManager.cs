@@ -1,10 +1,11 @@
-﻿// BudgetApp.cs
+﻿
 namespace Personal_budget_management_tool
 {
-    public class BudgetApp
+    public class BudgetManager
     {
         private User currentUser;
         private DataManager dataManager;
+
 
         internal Report GenerateReport()
         {
@@ -79,9 +80,14 @@ namespace Personal_budget_management_tool
                     return true;
                 }
             }
-        
+
             // If no user is found, throw an exception
             return false;
+        }
+
+        public User GetCurrentUser()
+        {
+            return CurrentUser;
         }
 
         // private void StartApp() { /*...*/ }

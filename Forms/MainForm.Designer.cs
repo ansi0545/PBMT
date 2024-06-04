@@ -25,15 +25,8 @@
         private System.Windows.Forms.Button btnSavingsGoals;
         private System.Windows.Forms.Button btnReports;
         private System.Windows.Forms.Button btnReminders;
-
-        private TextBox txtNewUsername;
-        private TextBox txtNewPassword;
-        private Button btnSubmit;
-        private Button btnRegister;
-        private Label lblUsername;
-        private Label lblPassword;
-        private Label lblNewUsername;
-        private Label lblNewPassword;
+        
+        private Button btnLogin;
         private System.Windows.Forms.Label lblFinancialSummary;
 
         #region Windows Form Designer generated code
@@ -51,14 +44,6 @@
             btnReminders = new Button();
             lblFinancialSummary = new Label();
             btnLogin = new Button();
-            btnSubmit = new Button();
-            btnRegister = new Button();
-            txtNewUsername = new TextBox();
-            txtNewPassword = new TextBox();
-            lblUsername = new Label();
-            lblPassword = new Label();
-            lblNewUsername = new Label();
-            lblNewPassword = new Label();
             SuspendLayout();
             // 
             // btnIncomeRegistration
@@ -121,65 +106,7 @@
             btnLogin.Size = new Size(200, 53);
             btnLogin.TabIndex = 0;
             btnLogin.Text = "Login";
-            btnLogin.Click += btnSubmit_Click;
-            // 
-            // btnSubmit
-            // 
-            btnSubmit.Location = new Point(0, 0);
-            btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(75, 23);
-            btnSubmit.TabIndex = 0;
-            btnSubmit.Click += btnSubmit_Click;
-            // 
-            // btnRegister
-            // 
-            btnRegister.Location = new Point(0, 0);
-            btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(75, 23);
-            btnRegister.TabIndex = 0;
-            btnRegister.Click += btnRegister_Click;
-            // 
-            // txtNewUsername
-            // 
-            txtNewUsername.Location = new Point(0, 0);
-            txtNewUsername.Name = "txtNewUsername";
-            txtNewUsername.Size = new Size(100, 31);
-            txtNewUsername.TabIndex = 0;
-            // 
-            // txtNewPassword
-            // 
-            txtNewPassword.Location = new Point(0, 0);
-            txtNewPassword.Name = "txtNewPassword";
-            txtNewPassword.Size = new Size(100, 31);
-            txtNewPassword.TabIndex = 0;
-            // 
-            // lblUsername
-            // 
-            lblUsername.Location = new Point(0, 0);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(100, 23);
-            lblUsername.TabIndex = 0;
-            // 
-            // lblPassword
-            // 
-            lblPassword.Location = new Point(0, 0);
-            lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(100, 23);
-            lblPassword.TabIndex = 0;
-            // 
-            // lblNewUsername
-            // 
-            lblNewUsername.Location = new Point(0, 0);
-            lblNewUsername.Name = "lblNewUsername";
-            lblNewUsername.Size = new Size(100, 23);
-            lblNewUsername.TabIndex = 0;
-            // 
-            // lblNewPassword
-            // 
-            lblNewPassword.Location = new Point(0, 0);
-            lblNewPassword.Name = "lblNewPassword";
-            lblNewPassword.Size = new Size(100, 23);
-            lblNewPassword.TabIndex = 0;
+            btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // MainForm
             // 
@@ -198,7 +125,6 @@
             ResumeLayout(false);
         }
 
-        private Button btnLogin;
     }
 
 

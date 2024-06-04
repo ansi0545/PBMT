@@ -4,12 +4,12 @@ namespace Personal_budget_management_tool.Forms
     public partial class LoginForm : Form
     {
         private User currentUser;
-        private BudgetApp budgetApp;
-        public LoginForm(BudgetApp app)
+        private BudgetManager budgetManager;
+        public LoginForm(BudgetManager manager)
         {
             InitializeComponent();
-           // currentUser = user;
-            budgetApp = app;
+            budgetManager = manager;
+            currentUser = budgetManager.GetCurrentUser();
         }
         private void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -19,7 +19,7 @@ namespace Personal_budget_management_tool.Forms
             try
             {
                 //currentUser.Login(inputUsername, inputPassword);
-                budgetApp.LoginUser(inputUsername, inputPassword);
+                budgetManager.LoginUser(inputUsername, inputPassword);
                 MessageBox.Show("Login successful!");
                 this.Close();
             }
@@ -32,6 +32,11 @@ namespace Personal_budget_management_tool.Forms
         {
             string newUsername = txtNewUsername.Text;
             string newPassword = txtNewPassword.Text;
+
+            if (currentUser == null)
+            {
+                currentUser = new User(newUsername, newPassword);
+            }
 
             currentUser.Register(newUsername, newPassword);
             MessageBox.Show("Registration successful!");

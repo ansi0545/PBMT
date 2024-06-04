@@ -9,7 +9,7 @@ namespace Personal_budget_management_tool
 
         private string username;
         private string password;
-        private BudgetApp budget;
+        private BudgetManager budget;
         internal SavingsGoal SavingsGoal { get; set; }
 
         public string Salt
@@ -28,7 +28,7 @@ namespace Personal_budget_management_tool
             get { return password; }
             set { password = value; }
         }
-        public BudgetApp Budget
+        public BudgetManager Budget
         {
             get { return budget; }
             set { budget = value; }
@@ -42,7 +42,7 @@ namespace Personal_budget_management_tool
         {
             this.username = username;
             this.password = password;
-            this.budget = new BudgetApp();
+            this.budget = new BudgetManager();
         }
 
         public bool Login(string inputUsername, string inputPassword)
@@ -59,15 +59,18 @@ namespace Personal_budget_management_tool
             }
         }
 
-        public void Register(string username, string password, BudgetApp budgetApp)
+        public void Register(string username, string password, BudgetManager budgetApp)
         {
             Username = username;
             Salt = GenerateSalt();
             Password = ComputeHash(password + Salt);
-            Budget = budgetApp;
+            Budget = budgetApp ?? new BudgetManager();
 
-            // Add the new user to the list of users in the BudgetApp
-            budgetApp.Users.Add(this);
+            // Add the new user to the list of users in the BudgetManager
+            if (budgetApp != null)
+            {
+                budgetApp.Users.Add(this);
+            }
         }
 
         private string GenerateSalt()
@@ -106,7 +109,7 @@ namespace Personal_budget_management_tool
         {
             Username = username;
             Password = password;
-            Budget = new BudgetApp();
+            Budget = new BudgetManager();
         }
     }
 }

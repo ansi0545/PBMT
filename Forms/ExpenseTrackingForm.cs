@@ -2,8 +2,8 @@
 {
     public partial class ExpenseTrackingForm : Form
     {
-        private BudgetApp budgetApp;
-        public ExpenseTrackingForm(BudgetApp budgetApp)
+        private BudgetManager budgetApp;
+        public ExpenseTrackingForm(BudgetManager budgetApp)
         {
             InitializeComponent();
             this.budgetApp = budgetApp;

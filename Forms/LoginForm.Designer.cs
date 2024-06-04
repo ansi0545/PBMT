@@ -57,6 +57,7 @@
             btnSubmit.Size = new Size(141, 40);
             btnSubmit.TabIndex = 4;
             btnSubmit.Text = "Submit";
+            btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnRegister
             // 
@@ -65,6 +66,7 @@
             btnRegister.Size = new Size(137, 40);
             btnRegister.TabIndex = 5;
             btnRegister.Text = "Register";
+            btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // txtUsername
             // 
@@ -79,6 +81,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(329, 31);
             txtPassword.TabIndex = 1;
+            txtPassword.PasswordChar = '*';
             // 
             // txtNewUsername
             // 
@@ -93,6 +96,7 @@
             txtNewPassword.Name = "txtNewPassword";
             txtNewPassword.Size = new Size(329, 31);
             txtNewPassword.TabIndex = 3;
+            txtNewPassword.PasswordChar = '*';
             // 
             // lblUsername
             // 

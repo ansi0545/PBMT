@@ -2,8 +2,8 @@
 {
     public partial class RemindersForm : Form
     {
-        private BudgetApp budgetApp;
-        public RemindersForm(BudgetApp budgetApp)
+        private BudgetManager budgetApp;
+        public RemindersForm(BudgetManager budgetApp)
         {
             InitializeComponent();
             this.budgetApp = budgetApp;
