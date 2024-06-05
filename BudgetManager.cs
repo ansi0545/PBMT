@@ -1,11 +1,9 @@
-﻿
-namespace Personal_budget_management_tool
+﻿namespace Personal_budget_management_tool
 {
     public class BudgetManager
     {
         private User currentUser;
         private DataManager dataManager;
-
 
         internal Report GenerateReport()
         {
@@ -73,7 +71,7 @@ namespace Personal_budget_management_tool
             // Check if a user with the provided username exists
             foreach (User user in Users)
             {
-                if (user.Username == username && user.Password == password)
+                if (user.Username == username && user.CheckPassword(password))
                 {
                     // If such a user is found, set the CurrentUser to that user
                     CurrentUser = user;
@@ -81,7 +79,7 @@ namespace Personal_budget_management_tool
                 }
             }
 
-            // If no user is found, throw an exception
+            // If no user is found, return false
             return false;
         }
 
@@ -89,6 +87,21 @@ namespace Personal_budget_management_tool
         {
             return CurrentUser;
         }
+
+        public void RegisterUser(string username, string password)
+        {
+            // Create a new user with the hashed password
+            User newUser = new User(username, password);
+
+            // Add the new user to the list of users
+            Users.Add(newUser);
+
+        
+            // Save the users to the file
+            SaveUsers();
+        }
+
+
 
         // private void StartApp() { /*...*/ }
         // private void LoginUser(string username) { /*...*/ }
