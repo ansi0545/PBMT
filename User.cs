@@ -1,12 +1,13 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool
 {
     public class User
     {
+        private UserManager userManager;
         private string salt;
-
         private string username;
         private string password;
         private BudgetManager budget;
@@ -60,19 +61,19 @@ namespace Personal_budget_management_tool
             }
         }
 
-        public void Register(string username, string password, BudgetManager budgetManager)
-        {
-            Username = username;
-            Salt = GenerateSalt();
-            Password = ComputeHash(password + Salt);
-            Budget = budgetManager ?? new BudgetManager();
+        // public void Register(string username, string password, BudgetManager budgetManager)
+        // {
+        //     Username = username;
+        //     Salt = GenerateSalt();
+        //     Password = ComputeHash(password + Salt);
+        //     Budget = budgetManager ?? new BudgetManager();
 
-            // Add the new user to the list of users in the BudgetManager
-            if (budgetManager != null)
-            {
-                budgetManager.Users.Add(this);
-            }
-        }
+        //     // Add the new user to the list of users in the BudgetManager
+        //     if (budgetManager != null)
+        //     {
+        //         userManager.Users.Add(this);
+        //     }
+        // }
 
         private string GenerateSalt()
         {

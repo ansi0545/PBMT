@@ -1,21 +1,21 @@
 ﻿
 
+using Personal_budget_management_tool.Managers;
+
 namespace Personal_budget_management_tool.Forms
 {
 
     public partial class SavingsGoalsForm : Form
     {
-        private Label lblAmount;
-        private TextBox txtAmount;
-        private Label lblTimeframe;
-        private TextBox txtTimeframe;
-        private Button btnSave;
-        private BudgetManager budgetApp;
+        private UserManager userManager;
+        
+        private BudgetManager budgetManager;
 
-        public SavingsGoalsForm(BudgetManager budgetApp)
+        public SavingsGoalsForm(BudgetManager budgetManager, DataManager dataManager)
         {
             InitializeComponent();
-            this.budgetApp = budgetApp;
+            this.budgetManager = budgetManager;
+            this.userManager = new UserManager(dataManager);
 
         }
 
@@ -24,8 +24,8 @@ namespace Personal_budget_management_tool.Forms
         {
             double goalAmount = double.Parse(txtAmount.Text);
             DateTime desiredTimeframe = DateTime.Parse(txtTimeframe.Text);
-            budgetApp.SetSavingsGoalForCurrentUser(goalAmount, desiredTimeframe);
-            budgetApp.SaveUsers();
+            budgetManager.SetSavingsGoalForCurrentUser(goalAmount, desiredTimeframe);
+            userManager.SaveUsers();
         }
     }
 }

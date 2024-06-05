@@ -4,6 +4,10 @@ public class DataManager
 {
     public string FilePath { get; set; }
 
+    public DataManager()
+    {
+        FilePath = "path_to_your_file"; // Replace with the actual file path
+    }
     public List<User> LoadData()
     {
         List<User> users = new List<User>();
@@ -20,6 +24,7 @@ public class DataManager
                     string[] properties = line.Split(',');
 
                     User user = new User(properties[0], properties[1]);
+                    user.Salt = properties[2];
                     users.Add(user);
                 }
             }
@@ -35,7 +40,7 @@ public class DataManager
             foreach (User user in users)
             {
                 // Assuming the properties of the user are separated by a comma
-                writer.WriteLine($"{user.Username},{user.Password}");
+                writer.WriteLine($"{user.Username},{user.Salt},{user.Password}");
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿namespace Personal_budget_management_tool.Forms
+﻿using Personal_budget_management_tool.Managers;
+
+namespace Personal_budget_management_tool.Forms
 {
     public partial class RemindersForm : Form
     {

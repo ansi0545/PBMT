@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
+using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool.Forms
 {
     public partial class RegisterForm : Form
     {
+        private UserManager userManager;
+        private DataManager dataManager;
         private User currentUser;
         private BudgetManager budgetManager;
+
         public RegisterForm(BudgetManager manager)
         {
             InitializeComponent();
+            dataManager = new DataManager(); // Create a new DataManager instance
+            userManager = new UserManager(dataManager); // Initialize userManager with DataManager instance
             budgetManager = manager;
             currentUser = budgetManager.GetCurrentUser();
         }
@@ -25,14 +23,16 @@ namespace Personal_budget_management_tool.Forms
             string newUsername = txtNewUsername.Text;
             string newPassword = txtNewPassword.Text;
 
-            if (currentUser == null)
+            User user = userManager.RegisterUser(newUsername, newPassword);
+            if (user != null)
             {
-                currentUser = new User(newUsername, newPassword);
+                MessageBox.Show("Registration successful!");
             }
-
-            currentUser.Register(newUsername, newPassword);
-            MessageBox.Show("Registration successful!");
+            else
+            {
+                MessageBox.Show("Registration failed.");
+            }
         }
-        
+
     }
 }

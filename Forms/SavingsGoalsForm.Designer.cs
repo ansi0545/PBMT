@@ -6,6 +6,11 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private Label lblAmount;
+        private TextBox txtAmount;
+        private Label lblTimeframe;
+        private TextBox txtTimeframe;
+        private Button btnSave;
 
         /// <summary>
         /// Clean up any resources being used.
