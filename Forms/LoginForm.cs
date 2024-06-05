@@ -28,18 +28,11 @@ namespace Personal_budget_management_tool.Forms
                 MessageBox.Show("Incorrect username or password.");
             }
         }
+        
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            string newUsername = txtNewUsername.Text;
-            string newPassword = txtNewPassword.Text;
-
-            if (currentUser == null)
-            {
-                currentUser = new User(newUsername, newPassword);
-            }
-
-            currentUser.Register(newUsername, newPassword);
-            MessageBox.Show("Registration successful!");
+            RegisterForm registerForm = new RegisterForm(budgetManager);
+            registerForm.Show();
         }
     }
 }

@@ -8,14 +8,10 @@
         private System.ComponentModel.IContainer components = null;
         private TextBox txtUsername;
         private TextBox txtPassword;
-        private TextBox txtNewUsername;
-        private TextBox txtNewPassword;
         private Button btnSubmit;
-        private Button btnRegister;
         private Label lblUsername;
         private Label lblPassword;
-        private Label lblNewUsername;
-        private Label lblNewPassword;
+        
 
         /// <summary>
         /// Clean up any resources being used.
@@ -39,15 +35,10 @@
         private void InitializeComponent()
         {
             btnSubmit = new Button();
-            btnRegister = new Button();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
-            txtNewUsername = new TextBox();
-            txtNewPassword = new TextBox();
             lblUsername = new Label();
             lblPassword = new Label();
-            lblNewUsername = new Label();
-            lblNewPassword = new Label();
             SuspendLayout();
             // 
             // btnSubmit
@@ -58,15 +49,6 @@
             btnSubmit.TabIndex = 4;
             btnSubmit.Text = "Submit";
             btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // btnRegister
-            // 
-            btnRegister.Location = new Point(411, 301);
-            btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(137, 40);
-            btnRegister.TabIndex = 5;
-            btnRegister.Text = "Register";
-            btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // txtUsername
             // 
@@ -82,21 +64,6 @@
             txtPassword.Size = new Size(329, 31);
             txtPassword.TabIndex = 1;
             txtPassword.PasswordChar = '*';
-            // 
-            // txtNewUsername
-            // 
-            txtNewUsername.Location = new Point(219, 156);
-            txtNewUsername.Name = "txtNewUsername";
-            txtNewUsername.Size = new Size(329, 31);
-            txtNewUsername.TabIndex = 2;
-            // 
-            // txtNewPassword
-            // 
-            txtNewPassword.Location = new Point(219, 232);
-            txtNewPassword.Name = "txtNewPassword";
-            txtNewPassword.Size = new Size(329, 31);
-            txtNewPassword.TabIndex = 3;
-            txtNewPassword.PasswordChar = '*';
             // 
             // lblUsername
             // 
@@ -114,24 +81,6 @@
             lblPassword.TabIndex = 7;
             lblPassword.Text = "Password";
             // 
-            // lblNewUsername
-            // 
-            lblNewUsername.AutoSize = true;
-            lblNewUsername.Location = new Point(49, 162);
-            lblNewUsername.Name = "lblNewUsername";
-            lblNewUsername.Size = new Size(131, 25);
-            lblNewUsername.TabIndex = 8;
-            lblNewUsername.Text = "New Username";
-            // 
-            // lblNewPassword
-            // 
-            lblNewPassword.AutoSize = true;
-            lblNewPassword.Location = new Point(49, 238);
-            lblNewPassword.Name = "lblNewPassword";
-            lblNewPassword.Size = new Size(127, 25);
-            lblNewPassword.TabIndex = 9;
-            lblNewPassword.Text = "New Password";
-            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -139,14 +88,10 @@
             ClientSize = new Size(800, 450);
             Controls.Add(txtUsername);
             Controls.Add(txtPassword);
-            Controls.Add(txtNewUsername);
-            Controls.Add(txtNewPassword);
+            
             Controls.Add(btnSubmit);
-            Controls.Add(btnRegister);
             Controls.Add(lblUsername);
             Controls.Add(lblPassword);
-            Controls.Add(lblNewUsername);
-            Controls.Add(lblNewPassword);
             Name = "LoginForm";
             Text = "LoginForm";
             ResumeLayout(false);

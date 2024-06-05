@@ -25,7 +25,11 @@ namespace Personal_budget_management_tool.Forms
             LoginForm loginForm = new LoginForm(budgetApp); // Pass budgetApp to the form
             loginForm.Show();
         }
-
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            RegisterForm registerForm = new RegisterForm(budgetApp); // Pass budgetApp to the form
+            registerForm.Show();
+        }
         private void btnIncomeRegistration_Click(object sender, EventArgs e)
         {
             IncomeRegistrationForm incomeRegistrationForm = new IncomeRegistrationForm(budgetApp); // Pass budgetApp to the form
