@@ -16,8 +16,9 @@ namespace Personal_budget_management_tool.Managers
         public UserManager(DataManager dataManager)
         {
             this.dataManager = dataManager;
+            LoadUsers();
         }
-        
+
         public void LoadUsers()
         {
             dataManager.FilePath = "path/to/your/file.json";
@@ -36,18 +37,34 @@ namespace Personal_budget_management_tool.Managers
             SaveUsers();
             return newUser;
         }
+        public bool ValidateUser(string username, string password)
+        {
+            User user = GetUser(username);
+            if (user != null && user.Password == password)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public User GetUser(string username)
+        {
+            // Assuming users is a List<User> that stores all the users
+            return Users.FirstOrDefault(user => user.Username == username);
+        }
+
 
         public User LoginUser(string username, string password)
         {
-            foreach (User user in Users)
+            User user = GetUser(username);
+            if (user != null && user.CheckPassword(password))
             {
-                if (user.Username == username && user.CheckPassword(password))
-                {
-                    return user;
-                }
+                return user;
             }
             return null;
         }
-
     }
 }

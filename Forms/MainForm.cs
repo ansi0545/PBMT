@@ -9,6 +9,8 @@ namespace Personal_budget_management_tool.Forms
         private User currentUser;
         private BudgetManager budgetManager; // Add this line
         private DataManager dataManager;
+        
+        string fileName = Application.StartupPath + "\\Budget.txt";
 
         public MainForm()
         {

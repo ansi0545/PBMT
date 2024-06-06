@@ -3,10 +3,13 @@
 public class DataManager
 {
     public string FilePath { get; set; }
+     private List<User> users { get; set; } // Define users as a class-level field
 
     public DataManager()
     {
         FilePath = "path_to_your_file"; // Replace with the actual file path
+         users = new List<User>(); // Initialize users list
+        LoadData(); // Load the data when a DataManager object is created
     }
     public List<User> LoadData()
     {

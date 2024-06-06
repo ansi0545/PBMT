@@ -1,5 +1,6 @@
 ﻿
 using Personal_budget_management_tool.Managers;
+using Personal_budget_management_tool.HelperMethods;
 
 namespace Personal_budget_management_tool.Forms
 {
@@ -23,8 +24,8 @@ namespace Personal_budget_management_tool.Forms
             string newUsername = txtNewUsername.Text;
             string newPassword = txtNewPassword.Text;
 
-            User user = userManager.RegisterUser(newUsername, newPassword);
-            if (user != null)
+             User user = userManager.RegisterUser(newUsername, newPassword);
+            if (user != null && userManager.ValidateUser(newUsername, newPassword))
             {
                 MessageBox.Show("Registration successful!");
             }

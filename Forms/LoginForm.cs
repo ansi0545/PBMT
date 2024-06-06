@@ -21,8 +21,8 @@ namespace Personal_budget_management_tool.Forms
             string inputUsername = txtUsername.Text;
             string inputPassword = txtPassword.Text;
 
-            User user = userManager.LoginUser(inputUsername, inputPassword);
-            if (user != null)
+            bool isValidUser = userManager.ValidateUser(inputUsername, inputPassword);
+            if (isValidUser)
             {
                 MessageBox.Show("Login successful!");
                 this.Close();
