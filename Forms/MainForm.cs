@@ -7,9 +7,7 @@ namespace Personal_budget_management_tool.Forms
     public partial class MainForm : Form
     {
         private User currentUser;
-
-
-        private BudgetManager budgetManager; // Add this line
+        private BudgetManager budgetManager;
         private DataManager dataManager;
 
         string fileName = Application.StartupPath + "\\Budget.txt";
@@ -29,44 +27,45 @@ namespace Personal_budget_management_tool.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm(budgetManager, dataManager); // Pass budgetManager to the form
+            LoginForm loginForm = new LoginForm(budgetManager, dataManager);
             loginForm.Show();
         }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm(budgetManager); // Pass budgetManager to the form
+            RegisterForm registerForm = new RegisterForm(budgetManager);
             registerForm.Show();
         }
+
         private void btnIncomeRegistration_Click(object sender, EventArgs e)
         {
-            IncomeRegistrationForm incomeRegistrationForm = new IncomeRegistrationForm(budgetManager); // Pass budgetManager to the form
+            IncomeRegistrationForm incomeRegistrationForm = new IncomeRegistrationForm(budgetManager);
             incomeRegistrationForm.Show();
         }
 
         private void btnExpenseTracking_Click(object sender, EventArgs e)
         {
-            ExpenseTrackingForm expenseTrackingForm = new ExpenseTrackingForm(budgetManager); // Pass budgetManager to the form
+            ExpenseTrackingForm expenseTrackingForm = new ExpenseTrackingForm(budgetManager);
             expenseTrackingForm.Show();
         }
 
         private void btnSavingsGoals_Click(object sender, EventArgs e)
         {
             DataManager dataManager = new DataManager();
-            SavingsGoalsForm savingsGoalsForm = new SavingsGoalsForm(budgetManager, dataManager); // Pass budgetManager to the form
+            SavingsGoalsForm savingsGoalsForm = new SavingsGoalsForm(budgetManager, dataManager);
             savingsGoalsForm.Show();
         }
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            ReportsForm reportsForm = new ReportsForm(budgetManager); // Pass budgetManager to the form
+            ReportsForm reportsForm = new ReportsForm(budgetManager);
             reportsForm.Show();
         }
 
         private void btnReminders_Click(object sender, EventArgs e)
         {
-            RemindersForm remindersForm = new RemindersForm(budgetManager); // Pass budgetManager to the form
+            RemindersForm remindersForm = new RemindersForm(budgetManager);
             remindersForm.Show();
         }
-
     }
 }

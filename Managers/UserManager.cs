@@ -1,4 +1,8 @@
-﻿namespace Personal_budget_management_tool.Managers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Personal_budget_management_tool.Managers
 {
     internal class UserManager
     {
@@ -20,7 +24,6 @@
         {
             dataManager.Users = Users;
         }
-
 
         public User RegisterUser(string username, string password)
         {
@@ -73,7 +76,7 @@
         public User LoginUser(string username, string password)
         {
             User user = GetUser(username);
-            if (user != null && user.CheckPassword(password + user.Salt))
+            if (user != null && user.CheckPassword(password))
             {
                 return user;
             }

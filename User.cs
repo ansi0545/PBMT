@@ -1,47 +1,48 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json.Serialization;
 using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool
 {
-    internal class User
+    public class User
     {
-        private string salt;
-        private string username;
-        private string password;
-        private BudgetManager budget;
+        [JsonInclude]
+        public string Username { get; private set; }
+
+        [JsonInclude]
+        public string Password { get; private set; }
+
+        [JsonInclude]
+        public string Salt { get; private set; }
+
+        [JsonIgnore]
+        internal List<Income> Incomes { get; private set; }
+
+        [JsonIgnore]
+        internal List<Expense> Expenses { get; private set; }
+
+        [JsonIgnore]
+        internal SavingsGoal SavingsGoal { get; set; }
 
         public User(string username, string password)
         {
-            this.username = username;
-            this.salt = GenerateSalt();
-            this.password = ComputeHash(password + this.salt);
-            this.budget = new BudgetManager(new DataManager { FilePath = Application.StartupPath + "\\Budget.txt" });
-            this.Incomes = new List<Income>();
-            this.Expenses = new List<Expense>();
+            Username = username;
+            Salt = GenerateSalt();
+            Password = ComputeHash(password + Salt);
+            Incomes = new List<Income>();
+            Expenses = new List<Expense>();
         }
 
-        public string Username
+        [JsonConstructor]
+        public User(string username, string password, string salt)
         {
-            get { return username; }
-            private set { username = value; }
+            Username = username;
+            Password = password;
+            Salt = salt;
+            Incomes = new List<Income>();
+            Expenses = new List<Expense>();
         }
-
-        public string Password
-        {
-            get { return password; }
-            private set { password = value; }
-        }
-
-        public string Salt
-        {
-            get { return salt; }
-            private set { salt = value; }
-        }
-
-        public List<Income> Incomes { get; private set; }
-        public List<Expense> Expenses { get; private set; }
-        public SavingsGoal SavingsGoal { get; set; }
 
         private string GenerateSalt()
         {
@@ -55,7 +56,7 @@ namespace Personal_budget_management_tool
 
         public bool CheckPassword(string inputPassword)
         {
-            return this.Password == ComputeHash(inputPassword + this.salt);
+            return Password == ComputeHash(inputPassword + Salt);
         }
 
         private string ComputeHash(string input)
