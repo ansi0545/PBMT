@@ -23,6 +23,12 @@
             expenses.Add(expense);
         }
 
+        public string GetFinancialSummary()
+        {
+            double totalExpenses = expenses.Sum(e => e.Amount);
+            return $"Total expenses: {totalExpenses}";
+        }
+
         internal User CurrentUser
         {
             get { return currentUser; }

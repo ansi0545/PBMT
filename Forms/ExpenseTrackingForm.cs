@@ -5,10 +5,16 @@ namespace Personal_budget_management_tool.Forms
     public partial class ExpenseTrackingForm : Form
     {
         private BudgetManager budgetApp;
+        private MainForm mainForm;
         public ExpenseTrackingForm(BudgetManager budgetApp)
         {
             InitializeComponent();
             this.budgetApp = budgetApp;
+        }
+
+        public ExpenseTrackingForm(BudgetManager budgetManager, MainForm mainForm) : this(budgetManager)
+        {
+            this.mainForm = mainForm;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -24,6 +30,12 @@ namespace Personal_budget_management_tool.Forms
 
             // Add the new expense to the BudgetManager
             budgetApp.AddExpense(newExpense);
+
+
+            // Update the financial summary in MainForm
+            string summary = budgetApp.GetFinancialSummary(); // Replace this with your actual method to get the summary
+            mainForm.UpdateFinancialSummary(summary);
+
 
             // Clear the form
             dtpDate.Value = DateTime.Now;

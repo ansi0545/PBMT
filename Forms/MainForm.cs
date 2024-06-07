@@ -17,12 +17,12 @@ namespace Personal_budget_management_tool.Forms
             InitializeComponent();
             dataManager = new DataManager { FilePath = Application.StartupPath + "\\Budget.txt" };
             budgetManager = new BudgetManager(dataManager);
-            UpdateFinancialSummary();
+            UpdateFinancialSummary(budgetManager.GetFinancialSummary());
         }
 
-        private void UpdateFinancialSummary()
+        public void UpdateFinancialSummary(string summary)
         {
-            lblFinancialSummary.Text = "Financial Summary: Here will be the user's current financial situation.";
+            lblFinancialSummary.Text = summary;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -36,6 +36,7 @@ namespace Personal_budget_management_tool.Forms
             RegisterForm registerForm = new RegisterForm(budgetManager);
             registerForm.Show();
         }
+
         private void CheckLoginBeforeAction(Action action)
         {
             if (budgetManager.CurrentUser == null)
@@ -61,7 +62,7 @@ namespace Personal_budget_management_tool.Forms
         {
             CheckLoginBeforeAction(() =>
             {
-                ExpenseTrackingForm expenseTrackingForm = new ExpenseTrackingForm(budgetManager);
+                ExpenseTrackingForm expenseTrackingForm = new ExpenseTrackingForm(budgetManager,this);
                 expenseTrackingForm.Show();
             });
         }
@@ -75,6 +76,7 @@ namespace Personal_budget_management_tool.Forms
                 savingsGoalsForm.Show();
             });
         }
+
         private void btnReports_Click(object sender, EventArgs e)
         {
             CheckLoginBeforeAction(() =>
