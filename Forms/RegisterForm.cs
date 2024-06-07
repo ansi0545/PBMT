@@ -1,6 +1,4 @@
-﻿
-using Personal_budget_management_tool.Managers;
-using Personal_budget_management_tool.HelperMethods;
+﻿using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool.Forms
 {
@@ -14,24 +12,29 @@ namespace Personal_budget_management_tool.Forms
         public RegisterForm(BudgetManager manager)
         {
             InitializeComponent();
-            dataManager = new DataManager(); // Create a new DataManager instance
+            dataManager = new DataManager { FilePath = Application.StartupPath + "\\Budget.txt" }; // Initialize DataManager with file path
             userManager = new UserManager(dataManager); // Initialize userManager with DataManager instance
             budgetManager = manager;
             currentUser = budgetManager.GetCurrentUser();
         }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
             string newUsername = txtNewUsername.Text;
             string newPassword = txtNewPassword.Text;
 
-             User user = userManager.RegisterUser(newUsername, newPassword);
-            if (user != null && userManager.ValidateUser(newUsername, newPassword))
+            try
             {
-                MessageBox.Show("Registration successful!");
+                // Attempt to register the user
+                User newUser = userManager.RegisterUser(newUsername, newPassword);
+
+                // If registration succeeds, show a success message
+                MessageBox.Show($"User {newUser.Username} registered successfully.");
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Registration failed.");
+                // If registration fails, show an error message
+                MessageBox.Show(ex.Message);
             }
         }
 

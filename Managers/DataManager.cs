@@ -1,50 +1,94 @@
 ﻿using Personal_budget_management_tool;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 
 public class DataManager
 {
-    public string FilePath { get; set; }
-     private List<User> users { get; set; } // Define users as a class-level field
+    private const string Token = "PersonalBudgetManagementTool";
+    private string filePath;
 
-    public DataManager()
+    internal List<User> Users
     {
-        FilePath = "path_to_your_file"; // Replace with the actual file path
-         users = new List<User>(); // Initialize users list
-        LoadData(); // Load the data when a DataManager object is created
-    }
-    public List<User> LoadData()
-    {
-        List<User> users = new List<User>();
-
-        if (File.Exists(FilePath))
+        get
         {
-            using (StreamReader reader = new StreamReader(FilePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    // Assuming each user is stored in a separate line
-                    // And the properties of the user are separated by a comma
-                    string[] properties = line.Split(',');
+            return LoadDataFromFile<User>();
+        }
+        set
+        {
+            SaveData(value);
+        }
+    }
 
-                    User user = new User(properties[0], properties[1]);
-                    user.Salt = properties[2];
-                    users.Add(user);
+    public string FilePath
+    {
+        set
+        {
+            filePath = value;
+        }
+    }
+
+    private List<T> LoadDataFromFile<T>()
+    {
+        var data = new List<T>();
+
+        if (string.IsNullOrEmpty(filePath))
+        {
+            return data;
+        }
+
+        try
+        {
+            using (var reader = new StreamReader(filePath))
+            {
+                string line = reader.ReadLine();
+                if (line != Token)
+                {
+                    throw new InvalidOperationException("File was not saved by this application.");
+                }
+
+                int dataCount = int.Parse(reader.ReadLine());
+
+                for (int i = 0; i < dataCount; i++)
+                {
+                    line = reader.ReadLine();
+                    var item = JsonSerializer.Deserialize<T>(line);
+                    data.Add(item);
                 }
             }
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred while loading data: {ex.Message}");
+        }
 
-        return users;
+        return data;
     }
 
-    public void SaveData(List<User> users)
+    private void SaveData<T>(List<T> data)
     {
-        using (StreamWriter writer = new StreamWriter(FilePath))
+        try
         {
-            foreach (User user in users)
+            if (string.IsNullOrEmpty(filePath))
             {
-                // Assuming the properties of the user are separated by a comma
-                writer.WriteLine($"{user.Username},{user.Salt},{user.Password}");
+                throw new InvalidOperationException("File path has not been set.");
             }
+
+            using (var writer = new StreamWriter(filePath))
+            {
+                writer.WriteLine(Token);
+                writer.WriteLine(data.Count);
+                foreach (var item in data)
+                {
+                    var line = JsonSerializer.Serialize(item);
+                    writer.WriteLine(line);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred while saving data: {ex.Message}");
         }
     }
 }

@@ -4,76 +4,44 @@ using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool
 {
-    public class User
+    internal class User
     {
-        private UserManager userManager;
         private string salt;
         private string username;
         private string password;
         private BudgetManager budget;
-        internal SavingsGoal SavingsGoal { get; set; }
 
-
-        public string Salt
+        public User(string username, string password)
         {
-            get { return salt; }
-            set { salt = value; }
+            this.username = username;
+            this.salt = GenerateSalt();
+            this.password = ComputeHash(password + this.salt);
+            this.budget = new BudgetManager(new DataManager { FilePath = Application.StartupPath + "\\Budget.txt" });
+            this.Incomes = new List<Income>();
+            this.Expenses = new List<Expense>();
         }
 
         public string Username
         {
             get { return username; }
-            set { username = value; }
+            private set { username = value; }
         }
+
         public string Password
         {
             get { return password; }
-            set { password = value; }
+            private set { password = value; }
         }
-        public BudgetManager Budget
+
+        public string Salt
         {
-            get { return budget; }
-            set { budget = value; }
+            get { return salt; }
+            private set { salt = value; }
         }
 
-        internal List<Income> Incomes { get; set; }
-        internal List<Expense> Expenses { get; set; } = new List<Expense>();
-
-        // Added constructor
-        public User(string username, string password)
-        {
-            this.username = username;
-            this.password = password;
-            this.budget = new BudgetManager();
-        }
-
-        public bool Login(string inputUsername, string inputPassword)
-        {
-            if (inputUsername == Username && ComputeHash(inputPassword + Salt) == Password)
-            {
-                // The user is logged in.
-                return true;
-            }
-            else
-            {
-                // The username or password is incorrect.
-                return false;
-            }
-        }
-
-        // public void Register(string username, string password, BudgetManager budgetManager)
-        // {
-        //     Username = username;
-        //     Salt = GenerateSalt();
-        //     Password = ComputeHash(password + Salt);
-        //     Budget = budgetManager ?? new BudgetManager();
-
-        //     // Add the new user to the list of users in the BudgetManager
-        //     if (budgetManager != null)
-        //     {
-        //         userManager.Users.Add(this);
-        //     }
-        // }
+        public List<Income> Incomes { get; private set; }
+        public List<Expense> Expenses { get; private set; }
+        public SavingsGoal SavingsGoal { get; set; }
 
         private string GenerateSalt()
         {
@@ -84,11 +52,12 @@ namespace Personal_budget_management_tool
             }
             return Convert.ToBase64String(bytes);
         }
+
         public bool CheckPassword(string inputPassword)
         {
-            return this.Password == ComputeHash(inputPassword + this.Salt);
+            return this.Password == ComputeHash(inputPassword + this.salt);
         }
-        
+
         private string ComputeHash(string input)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -101,23 +70,6 @@ namespace Personal_budget_management_tool
                 }
                 return builder.ToString();
             }
-        }
-
-
-
-        public void Logout()
-        {
-            // Reset user's information
-            Username = null;
-            Password = null;
-            Budget = null;
-        }
-
-        public void Register(string username, string password)
-        {
-            Username = username;
-            Password = password;
-            Budget = new BudgetManager();
         }
     }
 }

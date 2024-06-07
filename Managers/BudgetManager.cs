@@ -6,13 +6,12 @@
         private User currentUser;
         private DataManager dataManager;
 
-        internal Report GenerateReport()
+        public BudgetManager(DataManager dataManager)
         {
-            // Assuming User class has properties Incomes, Expenses, and a SavingsGoal with a GoalAmount property
-            return new Report(CurrentUser.Incomes, CurrentUser.Expenses, CurrentUser.SavingsGoal.GoalAmount);
+            this.dataManager = dataManager;
         }
 
-        public User CurrentUser
+        internal User CurrentUser
         {
             get { return currentUser; }
             set { currentUser = value; }
@@ -23,42 +22,28 @@
             get { return dataManager; }
             set { dataManager = value; }
         }
+
         public void SetSavingsGoalForCurrentUser(double goalAmount, DateTime desiredTimeframe)
         {
-            CurrentUser.SavingsGoal = new SavingsGoal
+            if (CurrentUser != null)
             {
-                GoalAmount = goalAmount,
-                DesiredTimeframe = desiredTimeframe
-            };
+                CurrentUser.SavingsGoal = new SavingsGoal
+                {
+                    GoalAmount = goalAmount,
+                    DesiredTimeframe = desiredTimeframe
+                };
+            }
         }
 
-       
-
-        internal Report GenerateReportForGoal()
+        internal Report GenerateReport()
         {
-            // Assuming User class has properties Incomes, Expenses, and a SavingsGoal with a GoalAmount property
-            return new Report(CurrentUser.Incomes, CurrentUser.Expenses, CurrentUser.SavingsGoal.GoalAmount);
+            return new Report(CurrentUser.Incomes, CurrentUser.Expenses, CurrentUser.SavingsGoal?.GoalAmount ?? 0);
         }
 
-        internal Report GenerateReportForSavings()
+        // Add the GetCurrentUser method
+        internal User GetCurrentUser()
         {
-            // Assuming User class has properties Incomes, Expenses, and Savings which are List<double>
-            return new Report(CurrentUser.Incomes, CurrentUser.Expenses, CurrentUser.SavingsGoal.Savings);
+            return currentUser;
         }
-        internal void AddIncome(Income income)
-        {
-            CurrentUser.Incomes.Add(income);
-        }
-
-        internal void AddExpense(Expense expense)
-        {
-            CurrentUser.Expenses.Add(expense);
-        }
-
-        public User GetCurrentUser()
-        {
-            return CurrentUser;
-        }
-
     }
 }

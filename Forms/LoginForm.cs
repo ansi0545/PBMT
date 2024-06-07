@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+using System.Windows.Forms;
 using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool.Forms
@@ -6,37 +7,40 @@ namespace Personal_budget_management_tool.Forms
     public partial class LoginForm : Form
     {
         private UserManager userManager;
-        private User currentUser;
         private BudgetManager budgetManager;
+        private DataManager dataManager;
 
-        public LoginForm(BudgetManager manager, DataManager dataManager)
+        public LoginForm(BudgetManager budgetManager, DataManager dataManager)
         {
             InitializeComponent();
-            budgetManager = manager;
-            currentUser = budgetManager.GetCurrentUser();
-            userManager = new UserManager(dataManager); // Initialize userManager
+            this.dataManager = dataManager;
+            this.budgetManager = budgetManager;
+            userManager = new UserManager(dataManager);
         }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string inputUsername = txtUsername.Text;
-            string inputPassword = txtPassword.Text;
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
 
-            bool isValidUser = userManager.ValidateUser(inputUsername, inputPassword);
-            if (isValidUser)
+            if (userManager.ValidateUser(username, password))
             {
-                MessageBox.Show("Login successful!");
-                this.Close();
+                User user = userManager.LoginUser(username, password);
+                if (user != null)
+                {
+                    budgetManager.CurrentUser = user;
+                    MessageBox.Show("Login successful!");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password.");
+                }
             }
             else
             {
-                MessageBox.Show("Incorrect username or password.");
+                MessageBox.Show("Login failed. Invalid username or password.");
             }
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            RegisterForm registerForm = new RegisterForm(budgetManager);
-            registerForm.Show();
         }
     }
 }

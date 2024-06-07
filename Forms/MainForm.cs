@@ -7,15 +7,18 @@ namespace Personal_budget_management_tool.Forms
     public partial class MainForm : Form
     {
         private User currentUser;
+
+
         private BudgetManager budgetManager; // Add this line
         private DataManager dataManager;
-        
+
         string fileName = Application.StartupPath + "\\Budget.txt";
 
         public MainForm()
         {
             InitializeComponent();
-            budgetManager = new BudgetManager(); // Initialize the budgetManager variable with a new BudgetManager instance
+            dataManager = new DataManager { FilePath = Application.StartupPath + "\\Budget.txt" };
+            budgetManager = new BudgetManager(dataManager);
             UpdateFinancialSummary();
         }
 
