@@ -1,7 +1,5 @@
 ﻿using Personal_budget_management_tool;
-using System;
-using System.Collections.Generic;
-using System.IO;
+using Personal_budget_management_tool.HelperMethods;
 using System.Text.Json;
 
 public class DataManager
@@ -33,20 +31,14 @@ public class DataManager
     {
         var data = new List<T>();
 
-        if (string.IsNullOrEmpty(filePath))
-        {
-            return data;
-        }
+        ErrorHandling.CheckFilePath(filePath);
 
         try
         {
             using (var reader = new StreamReader(filePath))
             {
                 string line = reader.ReadLine();
-                if (line != Token)
-                {
-                    throw new InvalidOperationException("File was not saved by this application.");
-                }
+                ErrorHandling.CheckFileToken(line, Token);
 
                 int dataCount = int.Parse(reader.ReadLine());
 
@@ -60,7 +52,7 @@ public class DataManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"An error occurred while loading data: {ex.Message}");
+            ErrorHandling.ShowErrorMessage($"An error occurred while loading data: {ex.Message}");
         }
 
         return data;
@@ -68,13 +60,10 @@ public class DataManager
 
     private void SaveData<T>(List<T> data)
     {
+        ErrorHandling.CheckFilePath(filePath);
+
         try
         {
-            if (string.IsNullOrEmpty(filePath))
-            {
-                throw new InvalidOperationException("File path has not been set.");
-            }
-
             using (var writer = new StreamWriter(filePath))
             {
                 writer.WriteLine(Token);
@@ -88,7 +77,7 @@ public class DataManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"An error occurred while saving data: {ex.Message}");
+            ErrorHandling.ShowErrorMessage($"An error occurred while saving data: {ex.Message}");
         }
     }
 }
