@@ -5,10 +5,22 @@
         private UserManager userManager;
         private User currentUser;
         private DataManager dataManager;
+        private List<Expense> expenses;
 
         public BudgetManager(DataManager dataManager)
         {
             this.dataManager = dataManager;
+            this.expenses = new List<Expense>();
+        }
+
+        internal BudgetManager()
+        {
+            this.expenses = new List<Expense>();
+        }
+
+        internal void AddExpense(Expense expense)
+        {
+            expenses.Add(expense);
         }
 
         internal User CurrentUser
