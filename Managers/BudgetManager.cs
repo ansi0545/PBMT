@@ -30,13 +30,13 @@
             incomes.Add(income);
         }
 
-        public string GetFinancialSummary()
+        internal string GetFinancialSummary()
         {
-            
+
             double totalExpenses = expenses.Sum(expense => expense.Amount);
             double totalIncome = incomes.Sum(income => income.Amount);
             double total = totalIncome - totalExpenses;
-            
+
             return $"Total Income: {totalIncome}, Total Expense: {totalExpenses}, Balance: {total}";
         }
 
@@ -55,7 +55,7 @@
         public object Incomes { get; internal set; }
         public object Expenses { get; internal set; }
 
-        public void SetSavingsGoalForCurrentUser(double goalAmount, DateTime desiredTimeframe)
+        internal void SetSavingsGoalForCurrentUser(double goalAmount, DateTime desiredTimeframe)
         {
             if (CurrentUser != null)
             {
@@ -65,6 +65,23 @@
                     DesiredTimeframe = desiredTimeframe
                 };
             }
+        }
+
+        internal double GetBalanceForCurrentUser()
+        {
+            // Replace with your actual logic to get the balance for the current user
+            return 0;
+        }
+
+        internal SavingsGoal GetSavingsGoalForCurrentUser()
+        {
+            if (CurrentUser == null)
+            {
+                // Log an error or throw an exception if appropriate
+                return null;
+            }
+
+            return CurrentUser.SavingsGoal;
         }
 
         internal Report GenerateReport()

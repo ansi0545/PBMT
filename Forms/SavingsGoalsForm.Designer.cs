@@ -11,6 +11,7 @@
         private Label lblTimeframe;
         private TextBox txtTimeframe;
         private Button btnSave;
+        private Label lblFinancialSummary;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -40,6 +41,7 @@
             btnSave = new Button();
             textBox1 = new TextBox();
             lblGoal = new Label();
+            lblFinancialSummary = new Label();
             SuspendLayout();
             // 
             // lblAmount
@@ -84,6 +86,7 @@
             btnSave.Size = new Size(240, 35);
             btnSave.TabIndex = 4;
             btnSave.Text = "Save";
+            btnSave.Click += btnSave_Click;
             // 
             // textBox1
             // 
@@ -101,7 +104,16 @@
             lblGoal.Size = new Size(120, 20);
             lblGoal.TabIndex = 6;
             lblGoal.Text = "Goal:";
+            //
+            //lblFinancialSummary
             // 
+            lblFinancialSummary = new Label
+            {
+                Name = "lblFinancialSummary",
+                Location = new Point(10, 10), // Adjust the location as needed
+                Size = new Size(100, 20), // Adjust the size as needed
+                Text = "Financial Summary"
+            };
             // SavingsGoalsForm
             // 
             AutoScaleDimensions = new SizeF(12F, 22F);
@@ -114,6 +126,7 @@
             Controls.Add(lblTimeframe);
             Controls.Add(txtTimeframe);
             Controls.Add(btnSave);
+            Controls.Add(lblFinancialSummary);
             Font = new Font("Courier New", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
             Name = "SavingsGoalsForm";
@@ -126,5 +139,5 @@
         private Label lblGoal;
     }
 
-        #endregion
-    }
+    #endregion
+}

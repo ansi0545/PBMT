@@ -20,7 +20,7 @@ namespace Personal_budget_management_tool.Forms
             UpdateFinancialSummary(budgetManager.GetFinancialSummary());
         }
 
-        public void UpdateFinancialSummary(string summary)
+        internal void UpdateFinancialSummary(string summary)
         {
             lblFinancialSummary.Text = summary;
         }
@@ -72,7 +72,7 @@ namespace Personal_budget_management_tool.Forms
             CheckLoginBeforeAction(() =>
             {
                 DataManager dataManager = new DataManager { FilePath = Application.StartupPath + "\\Budget.txt" };
-                SavingsGoalsForm savingsGoalsForm = new SavingsGoalsForm(budgetManager, dataManager);
+                SavingsGoalsForm savingsGoalsForm = new SavingsGoalsForm(budgetManager, dataManager, this);
                 savingsGoalsForm.Show();
             });
         }
