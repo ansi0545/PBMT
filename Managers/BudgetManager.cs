@@ -6,11 +6,13 @@
         private User currentUser;
         private DataManager dataManager;
         private List<Expense> expenses;
+        private List<Income> incomes;
 
         public BudgetManager(DataManager dataManager)
         {
             this.dataManager = dataManager;
             this.expenses = new List<Expense>();
+            this.incomes = new List<Income>();
         }
 
         internal BudgetManager()
@@ -23,10 +25,16 @@
             expenses.Add(expense);
         }
 
+        internal void AddIncome(Income income)
+        {
+            incomes.Add(income);
+        }
+
         public string GetFinancialSummary()
         {
             double totalExpenses = expenses.Sum(e => e.Amount);
-            return $"Total expenses: {totalExpenses}";
+            double totalIncome = incomes.Sum(i => i.Amount);
+            return $"Total expenses: {totalExpenses}, Total income: {totalIncome}";
         }
 
         internal User CurrentUser
@@ -40,6 +48,9 @@
             get { return dataManager; }
             set { dataManager = value; }
         }
+
+        public object Incomes { get; internal set; }
+        public object Expenses { get; internal set; }
 
         public void SetSavingsGoalForCurrentUser(double goalAmount, DateTime desiredTimeframe)
         {

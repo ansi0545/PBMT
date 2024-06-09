@@ -53,7 +53,7 @@ namespace Personal_budget_management_tool.Forms
         {
             CheckLoginBeforeAction(() =>
             {
-                IncomeRegistrationForm incomeRegistrationForm = new IncomeRegistrationForm(budgetManager);
+                IncomeRegistrationForm incomeRegistrationForm = new IncomeRegistrationForm(budgetManager, this);
                 incomeRegistrationForm.Show();
             });
         }

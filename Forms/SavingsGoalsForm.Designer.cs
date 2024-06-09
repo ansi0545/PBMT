@@ -38,61 +38,92 @@
             lblTimeframe = new Label();
             txtTimeframe = new TextBox();
             btnSave = new Button();
+            textBox1 = new TextBox();
+            lblGoal = new Label();
             SuspendLayout();
             // 
             // lblAmount
             // 
-            lblAmount.Location = new Point(10, 10);
+            lblAmount.Location = new Point(12, 9);
+            lblAmount.Margin = new Padding(4, 0, 4, 0);
             lblAmount.Name = "lblAmount";
-            lblAmount.Size = new Size(100, 23);
+            lblAmount.Size = new Size(120, 20);
             lblAmount.TabIndex = 0;
             lblAmount.Text = "Amount:";
             // 
             // txtAmount
             // 
-            txtAmount.Location = new Point(10, 36);
+            txtAmount.Location = new Point(12, 32);
+            txtAmount.Margin = new Padding(4, 3, 4, 3);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(200, 31);
+            txtAmount.Size = new Size(239, 30);
             txtAmount.TabIndex = 1;
             // 
             // lblTimeframe
             // 
-            lblTimeframe.Location = new Point(10, 69);
+            lblTimeframe.Location = new Point(12, 79);
+            lblTimeframe.Margin = new Padding(4, 0, 4, 0);
             lblTimeframe.Name = "lblTimeframe";
-            lblTimeframe.Size = new Size(100, 23);
+            lblTimeframe.Size = new Size(120, 20);
             lblTimeframe.TabIndex = 2;
             lblTimeframe.Text = "Timeframe:";
             // 
             // txtTimeframe
             // 
-            txtTimeframe.Location = new Point(10, 95);
+            txtTimeframe.Location = new Point(12, 102);
+            txtTimeframe.Margin = new Padding(4, 3, 4, 3);
             txtTimeframe.Name = "txtTimeframe";
-            txtTimeframe.Size = new Size(200, 31);
+            txtTimeframe.Size = new Size(239, 30);
             txtTimeframe.TabIndex = 3;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(10, 141);
+            btnSave.Location = new Point(12, 309);
+            btnSave.Margin = new Padding(4, 3, 4, 3);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(200, 40);
+            btnSave.Size = new Size(240, 35);
             btnSave.TabIndex = 4;
             btnSave.Text = "Save";
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(12, 222);
+            textBox1.Margin = new Padding(4, 3, 4, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(239, 30);
+            textBox1.TabIndex = 5;
+            // 
+            // lblGoal
+            // 
+            lblGoal.Location = new Point(14, 199);
+            lblGoal.Margin = new Padding(4, 0, 4, 0);
+            lblGoal.Name = "lblGoal";
+            lblGoal.Size = new Size(120, 20);
+            lblGoal.TabIndex = 6;
+            lblGoal.Text = "Goal:";
+            // 
             // SavingsGoalsForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(12F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(960, 396);
+            Controls.Add(lblGoal);
+            Controls.Add(textBox1);
             Controls.Add(lblAmount);
             Controls.Add(txtAmount);
             Controls.Add(lblTimeframe);
             Controls.Add(txtTimeframe);
             Controls.Add(btnSave);
+            Font = new Font("Courier New", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "SavingsGoalsForm";
             Text = "Savings Goals";
             ResumeLayout(false);
             PerformLayout();
         }
+
+        private TextBox textBox1;
+        private Label lblGoal;
     }
 
         #endregion
