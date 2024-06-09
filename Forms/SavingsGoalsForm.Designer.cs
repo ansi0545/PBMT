@@ -87,7 +87,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(12, 222);
+            textBox1.Location = new Point(13, 176);
             textBox1.Margin = new Padding(4, 3, 4, 3);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(239, 30);
@@ -95,7 +95,7 @@
             // 
             // lblGoal
             // 
-            lblGoal.Location = new Point(14, 199);
+            lblGoal.Location = new Point(13, 153);
             lblGoal.Margin = new Padding(4, 0, 4, 0);
             lblGoal.Name = "lblGoal";
             lblGoal.Size = new Size(120, 20);

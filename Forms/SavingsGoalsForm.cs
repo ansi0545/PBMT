@@ -8,7 +8,7 @@ namespace Personal_budget_management_tool.Forms
     public partial class SavingsGoalsForm : Form
     {
         private UserManager userManager;
-        
+
         private BudgetManager budgetManager;
 
         public SavingsGoalsForm(BudgetManager budgetManager, DataManager dataManager)
@@ -26,6 +26,15 @@ namespace Personal_budget_management_tool.Forms
             DateTime desiredTimeframe = DateTime.Parse(txtTimeframe.Text);
             budgetManager.SetSavingsGoalForCurrentUser(goalAmount, desiredTimeframe);
             userManager.SaveUsers();
+        }
+
+        public void UpdateFinancialSummary()
+        {
+            SavingsGoal savingsGoal = budgetManager.GetSavingsGoalForCurrentUser();
+            double balance = budgetManager.GetBalanceForCurrentUser();
+            double difference = balance - savingsGoal.GoalAmount;
+
+            lblFinancialSummary.Text = $"Savings Goal: {savingsGoal.GoalAmount}, Balance: {balance}, Difference: {difference}";
         }
     }
 }

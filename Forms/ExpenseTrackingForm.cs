@@ -6,16 +6,20 @@ namespace Personal_budget_management_tool.Forms
     {
         private BudgetManager budgetApp;
         private MainForm mainForm;
-        public ExpenseTrackingForm(BudgetManager budgetApp)
+        public ExpenseTrackingForm(BudgetManager budgetApp, MainForm mainForm)
         {
             InitializeComponent();
             this.budgetApp = budgetApp;
+            string summary = budgetApp.GetFinancialSummary();
+            this.mainForm = mainForm;
+            mainForm.UpdateFinancialSummary(summary);
         }
 
-        public ExpenseTrackingForm(BudgetManager budgetManager, MainForm mainForm) : this(budgetManager)
-        {
-            this.mainForm = mainForm;
-        }
+        // public ExpenseTrackingForm(BudgetManager budgetManager, MainForm mainForm) : this(budgetManager)
+        // {
+        //     this.mainForm = mainForm;
+            
+        // }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -46,7 +50,7 @@ namespace Personal_budget_management_tool.Forms
 
         private void ExpenseTrackingForm_Load(object sender, EventArgs e)
         {
-            // Load categories into the ComboBox
+           
             foreach (var category in Enum.GetValues(typeof(Category)))
             {
                 cmbCategory.Items.Add(category);

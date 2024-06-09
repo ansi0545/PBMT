@@ -9,15 +9,19 @@ namespace Personal_budget_management_tool
         Entertainment,
         Groceries,
         Health,
+        HealthInsurance,
         Hygiene,
         Insurance,
         Other,
         Petfood,
         Petinsurance,
+        Presents,
         Rent,
         Training,
         Transportation,
-        Utilities
+        Utilities,
+        Veterinarycosts
+
     }
     internal class Expense
     {

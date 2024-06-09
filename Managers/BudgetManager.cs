@@ -32,9 +32,12 @@
 
         public string GetFinancialSummary()
         {
-            double totalExpenses = expenses.Sum(e => e.Amount);
-            double totalIncome = incomes.Sum(i => i.Amount);
-            return $"Total expenses: {totalExpenses}, Total income: {totalIncome}";
+            
+            double totalExpenses = expenses.Sum(expense => expense.Amount);
+            double totalIncome = incomes.Sum(income => income.Amount);
+            double total = totalIncome - totalExpenses;
+            
+            return $"Total Income: {totalIncome}, Total Expense: {totalExpenses}, Balance: {total}";
         }
 
         internal User CurrentUser

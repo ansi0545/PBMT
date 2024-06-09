@@ -62,7 +62,7 @@ namespace Personal_budget_management_tool.Forms
         {
             CheckLoginBeforeAction(() =>
             {
-                ExpenseTrackingForm expenseTrackingForm = new ExpenseTrackingForm(budgetManager,this);
+                ExpenseTrackingForm expenseTrackingForm = new ExpenseTrackingForm(budgetManager, this);
                 expenseTrackingForm.Show();
             });
         }
