@@ -25,6 +25,11 @@ namespace Personal_budget_management_tool
         [JsonIgnore]
         internal SavingsGoal SavingsGoal { get; set; }
 
+        public User()
+        {
+            Incomes = new List<Income>();
+            Expenses = new List<Expense>();
+        }
         public User(string username, string password)
         {
             Username = username;

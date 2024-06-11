@@ -32,12 +32,15 @@
 
         internal string GetFinancialSummary()
         {
-
             double totalExpenses = expenses.Sum(expense => expense.Amount);
             double totalIncome = incomes.Sum(income => income.Amount);
             double total = totalIncome - totalExpenses;
-
-            return $"Total Income: {totalIncome}, Total Expense: {totalExpenses}, Balance: {total}";
+            SavingsGoal savingsGoal = GetSavingsGoalForCurrentUser();
+            double balance = GetBalanceForCurrentUser();
+            double difference = savingsGoal != null ? balance - savingsGoal.GoalAmount : 0;
+            string savingsGoalText = savingsGoal != null ? $"Savings Goal: {savingsGoal.GoalAmount}, Balance: {balance}, Difference: {difference}" : "No savings goal set";
+            
+            return $"Total Income: {totalIncome}, Total Expense: {totalExpenses}, Balance: {total}, {savingsGoalText}";
         }
 
         internal User CurrentUser
@@ -69,8 +72,28 @@
 
         internal double GetBalanceForCurrentUser()
         {
-            // Replace with your actual logic to get the balance for the current user
-            return 0;
+            if (CurrentUser == null)
+            {
+                Console.WriteLine("CurrentUser is null");
+                return 0;
+            }
+
+            double totalIncome = CurrentUser.Incomes?.Sum(income => income.Amount) ?? 0;
+            double totalExpenses = CurrentUser.Expenses?.Sum(expense => expense.Amount) ?? 0;
+
+            if (CurrentUser.Incomes == null)
+            {
+                Console.WriteLine("CurrentUser.Incomes is null");
+            }
+
+            if (CurrentUser.Expenses == null)
+            {
+                Console.WriteLine("CurrentUser.Expenses is null");
+            }
+
+            Console.WriteLine($"totalIncome: {totalIncome}, totalExpenses: {totalExpenses}");
+
+            return totalIncome - totalExpenses;
         }
 
         internal SavingsGoal GetSavingsGoalForCurrentUser()
