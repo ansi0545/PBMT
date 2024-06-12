@@ -51,14 +51,14 @@
             // cmbFilter
             // 
             cmbFilter.Items.AddRange(new object[] { "Incomes", "Expenses", "Savings" });
-            cmbFilter.Location = new Point(10, 60);
+            cmbFilter.Location = new Point(10, 61);
             cmbFilter.Name = "cmbFilter";
             cmbFilter.Size = new Size(200, 33);
             cmbFilter.TabIndex = 1;
             // 
             // btnSort
             // 
-            btnSort.Location = new Point(216, 60);
+            btnSort.Location = new Point(1107, 61);
             btnSort.Name = "btnSort";
             btnSort.Size = new Size(168, 33);
             btnSort.TabIndex = 2;
@@ -71,14 +71,14 @@
             dgvReport.Location = new Point(10, 60);
             dgvReport.Name = "dgvReport";
             dgvReport.RowHeadersWidth = 62;
-            dgvReport.Size = new Size(760, 380);
+            dgvReport.Size = new Size(1288, 593);
             dgvReport.TabIndex = 3;
             // 
             // ReportsForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1321, 665);
             Controls.Add(lblFilter);
             Controls.Add(cmbFilter);
             Controls.Add(btnSort);

@@ -79,9 +79,16 @@ namespace Personal_budget_management_tool.Forms
 
         private void btnReports_Click(object sender, EventArgs e)
         {
+
             CheckLoginBeforeAction(() =>
             {
-                ReportsForm reportsForm = new ReportsForm(budgetManager);
+                if (budgetManager.CurrentUser == null)
+                {
+                    MessageBox.Show("No user is currently logged in.");
+                    return;
+                }
+
+                ReportsForm reportsForm = new ReportsForm(budgetManager, budgetManager.CurrentUser);
                 reportsForm.Show();
             });
         }
