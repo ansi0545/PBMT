@@ -23,11 +23,19 @@
         internal void AddExpense(Expense expense)
         {
             expenses.Add(expense);
+            if (currentUser != null)
+            {
+                currentUser.Expenses.Add(expense);
+            }
         }
 
         internal void AddIncome(Income income)
         {
             incomes.Add(income);
+            if (currentUser != null)
+            {
+                currentUser.Incomes.Add(income);
+            }
         }
 
         internal string GetFinancialSummary()
@@ -39,7 +47,7 @@
             double balance = GetBalanceForCurrentUser();
             double difference = savingsGoal != null ? balance - savingsGoal.GoalAmount : 0;
             string savingsGoalText = savingsGoal != null ? $"Savings Goal: {savingsGoal.GoalAmount}, Balance: {balance}, Difference: {difference}" : "No savings goal set";
-            
+
             return $"Total Income: {totalIncome}, Total Expense: {totalExpenses}, Balance: {total}, {savingsGoalText}";
         }
 
@@ -70,6 +78,8 @@
             }
         }
 
+        
+
         internal double GetBalanceForCurrentUser()
         {
             if (CurrentUser == null)
@@ -98,13 +108,13 @@
 
         internal SavingsGoal GetSavingsGoalForCurrentUser()
         {
-            if (CurrentUser == null)
-            {
-                // Log an error or throw an exception if appropriate
-                return null;
-            }
+            // if (CurrentUser == null)
+            // {
+            //     // Log an error or throw an exception if appropriate
+            //     return null;
+            // }
 
-            return CurrentUser.SavingsGoal;
+            return CurrentUser?.SavingsGoal;
         }
 
         internal Report GenerateReport()

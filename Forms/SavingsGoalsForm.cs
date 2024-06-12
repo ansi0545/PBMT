@@ -7,7 +7,7 @@ namespace Personal_budget_management_tool.Forms
 
     public partial class SavingsGoalsForm : Form
     {
-        private UserManager userManager;
+        //private UserManager userManager;
         private MainForm mainForm;
 
         private BudgetManager budgetManager;
@@ -16,7 +16,7 @@ namespace Personal_budget_management_tool.Forms
         {
             InitializeComponent();
             this.budgetManager = budgetManager;
-            userManager = new UserManager(dataManager);
+            //userManager = new UserManager(dataManager);
             this.mainForm = mainForm;
         }
 
@@ -29,11 +29,14 @@ namespace Personal_budget_management_tool.Forms
                 return;
             }
 
-            double goalAmount = double.Parse(txtAmount.Text);
-            days = int.Parse(txtTimeframe.Text);
+            if (!double.TryParse(txtAmount.Text, out double goalAmount))
+            {
+                MessageBox.Show("Please enter a valid goal amount.");
+                return;
+            }
+
             DateTime desiredTimeframe = DateTime.Today.AddDays(days);
             budgetManager.SetSavingsGoalForCurrentUser(goalAmount, desiredTimeframe);
-            userManager.SaveUsers();
             UpdateFinancialSummary();
             mainForm.UpdateFinancialSummary(budgetManager.GetFinancialSummary());
         }
@@ -42,12 +45,12 @@ namespace Personal_budget_management_tool.Forms
         {
             SavingsGoal savingsGoal = budgetManager.GetSavingsGoalForCurrentUser();
             double balance = budgetManager.GetBalanceForCurrentUser();
-            double difference = balance - savingsGoal.GoalAmount;
+            double difference = savingsGoal != null ? balance - savingsGoal.GoalAmount : 0;
 
-            Console.WriteLine($"Savings Goal: {savingsGoal.GoalAmount}, Balance: {balance}, Difference: {difference}");
-
-            lblFinancialSummary.Text = $"Savings Goal: {savingsGoal.GoalAmount}, Balance: {balance}, Difference: {difference}";
-
+            lblFinancialSummary.Text = savingsGoal != null
+                ? $"Savings Goal: {savingsGoal.GoalAmount}, Balance: {balance}, Difference: {difference}"
+                : "No savings goal set";
         }
+
     }
 }
