@@ -6,6 +6,8 @@ public class DataManager
 {
     private const string Token = "PersonalBudgetManagementTool";
     private string filePath;
+    private double savings;
+    private User currentUser;
 
     internal List<User> Users
     {
@@ -26,7 +28,6 @@ public class DataManager
             filePath = value;
         }
     }
-
     private List<T> LoadDataFromFile<T>()
     {
         var data = new List<T>();

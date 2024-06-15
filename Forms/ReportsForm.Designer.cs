@@ -33,15 +33,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            MenuStrip menuStrip = new MenuStrip();
+            menuStrip.Dock = DockStyle.Top;
             lblFilter = new Label();
             cmbFilter = new ComboBox();
             btnSort = new Button();
             dgvReport = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvReport).BeginInit();
             SuspendLayout();
+            //
+            // menuStrip
+            //
+            ToolStripMenuItem fileMenuItem = new ToolStripMenuItem("File");
+            fileMenuItem.DropDownItems.Add("New", null, NewMenuItem_Click);
+            fileMenuItem.DropDownItems.Add("Open data file", null, OpenDataFileMenuItem_Click);
+            fileMenuItem.DropDownItems.Add("Save data file", null, SaveDataFileMenuItem_Click);
+            fileMenuItem.DropDownItems.Add("Exit", null, ExitMenuItem_Click);
             // 
             // lblFilter
             // 
+            lblFilter = new Label();
             lblFilter.Location = new Point(10, 10);
             lblFilter.Name = "lblFilter";
             lblFilter.Size = new Size(100, 23);
@@ -50,6 +61,7 @@
             // 
             // cmbFilter
             // 
+            cmbFilter = new ComboBox();
             cmbFilter.Items.AddRange(new object[] { "Incomes", "Expenses", "SavingsGoal" });
             cmbFilter.Location = new Point(10, 40);
             cmbFilter.Name = "cmbFilter";
@@ -59,6 +71,7 @@
             // 
             // btnSort
             // 
+            btnSort = new Button();
             btnSort.Location = new Point(0, 0);
             btnSort.Name = "btnSort";
             btnSort.Size = new Size(75, 23);
@@ -66,6 +79,8 @@
             // 
             // dgvReport
             // 
+            dgvReport = new DataGridView();
+            //dgvReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvReport.ColumnHeadersHeight = 34;
             dgvReport.Location = new Point(10, 80);
             dgvReport.Name = "dgvReport";
@@ -75,9 +90,11 @@
             // 
             // ReportsForm
             // 
+            menuStrip.Items.Add(fileMenuItem);
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1517, 665);
+            Controls.Add(menuStrip);
             Controls.Add(lblFilter);
             Controls.Add(cmbFilter);
             Controls.Add(dgvReport);
