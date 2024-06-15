@@ -7,22 +7,19 @@ namespace Personal_budget_management_tool
 {
     public class User
     {
-        [JsonInclude]
+        // [JsonInclude]
         public string Username { get; private set; }
 
-        [JsonInclude]
+        // [JsonInclude]
         public string Password { get; private set; }
 
         [JsonInclude]
         public string Salt { get; private set; }
 
-        [JsonIgnore]
         internal List<Income> Incomes { get; private set; }
 
-        [JsonIgnore]
         internal List<Expense> Expenses { get; private set; }
 
-        [JsonIgnore]
         internal SavingsGoal SavingsGoal { get; set; }
 
         public User()

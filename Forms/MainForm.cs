@@ -101,5 +101,10 @@ namespace Personal_budget_management_tool.Forms
                 remindersForm.Show();
             });
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

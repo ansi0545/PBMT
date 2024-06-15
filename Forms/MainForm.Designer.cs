@@ -106,7 +106,7 @@
             lblFinancialSummary.Location = new Point(323, 11);
             lblFinancialSummary.Margin = new Padding(4, 0, 4, 0);
             lblFinancialSummary.Name = "lblFinancialSummary";
-            lblFinancialSummary.Size = new Size(984, 382);
+            lblFinancialSummary.Size = new Size(1453, 382);
             lblFinancialSummary.TabIndex = 5;
             lblFinancialSummary.Text = "Financial Summary: ";
             // 
@@ -134,7 +134,7 @@
             // 
             AutoScaleDimensions = new SizeF(12F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1711, 583);
+            ClientSize = new Size(1735, 583);
             Controls.Add(btnIncomeRegistration);
             Controls.Add(btnExpenseTracking);
             Controls.Add(btnSavingsGoals);
@@ -147,6 +147,7 @@
             Margin = new Padding(4, 3, 4, 3);
             Name = "MainForm";
             Text = "Personal budget management tool";
+            Load += MainForm_Load;
             ResumeLayout(false);
         }
     }
