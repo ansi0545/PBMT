@@ -23,7 +23,12 @@ namespace Personal_budget_management_tool.Forms
                 MessageBox.Show("The current user does not have a savings goal set.");
                 return;
             }
-            var report = new Report(currentUser.Incomes, currentUser.Expenses, currentUser.SavingsGoal.GoalAmount);
+
+            double totalIncome = currentUser.Incomes.Sum(i => i.Amount);
+            double totalExpenses = currentUser.Expenses.Sum(e => e.Amount);
+            double savings = totalIncome - totalExpenses;
+
+            var report = new Report(currentUser.Incomes, currentUser.Expenses, savings, currentUser.SavingsGoal.GoalAmount);
             dgvReport.DataSource = new List<Report> { report };
         }
 
@@ -40,7 +45,8 @@ namespace Personal_budget_management_tool.Forms
                     dgvReport.DataSource = currentUser.Expenses;
                     break;
                 case "SavingsGoal":
-                    dgvReport.DataSource = new List<SavingsGoal> { currentUser.SavingsGoal };
+                    GenerateReport();
+                   // dgvReport.DataSource = new List<SavingsGoal> { currentUser.SavingsGoal };
                     break;
             }
         }

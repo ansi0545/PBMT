@@ -82,7 +82,7 @@
             ClientSize = new Size(1321, 665);
             Controls.Add(lblFilter);
             Controls.Add(cmbFilter);
-            Controls.Add(btnSort);
+           // Controls.Add(btnSort);
             Controls.Add(dgvReport);
             Name = "ReportsForm";
             Text = "Reports";

@@ -78,7 +78,7 @@
             }
         }
 
-        
+
 
         internal double GetBalanceForCurrentUser()
         {
@@ -119,7 +119,9 @@
 
         internal Report GenerateReport()
         {
-            return new Report(CurrentUser.Incomes, CurrentUser.Expenses, CurrentUser.SavingsGoal?.GoalAmount ?? 0);
+            double savings = CurrentUser.SavingsGoal?.Savings ?? 0;
+            double goalAmount = CurrentUser.SavingsGoal?.GoalAmount ?? 0;
+            return new Report(CurrentUser.Incomes, CurrentUser.Expenses, savings, goalAmount);
         }
 
         // Add the GetCurrentUser method
