@@ -50,11 +50,12 @@
             // 
             // cmbFilter
             // 
-            cmbFilter.Items.AddRange(new object[] { "Incomes", "Expenses", "Savings" });
+            cmbFilter.Items.AddRange(new object[] { "Incomes", "Expenses", "SavingsGoal" });
             cmbFilter.Location = new Point(10, 61);
             cmbFilter.Name = "cmbFilter";
             cmbFilter.Size = new Size(200, 33);
             cmbFilter.TabIndex = 1;
+            cmbFilter.SelectedIndexChanged += new System.EventHandler(this.cmbFilter_SelectedIndexChanged);
             // 
             // btnSort
             // 

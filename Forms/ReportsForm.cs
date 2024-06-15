@@ -27,6 +27,24 @@ namespace Personal_budget_management_tool.Forms
             dgvReport.DataSource = new List<Report> { report };
         }
 
+        private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedFilter = cmbFilter.SelectedItem.ToString();
+
+            switch (selectedFilter)
+            {
+                case "Incomes":
+                    dgvReport.DataSource = currentUser.Incomes;
+                    break;
+                case "Expenses":
+                    dgvReport.DataSource = currentUser.Expenses;
+                    break;
+                case "SavingsGoal":
+                    dgvReport.DataSource = new List<SavingsGoal> { currentUser.SavingsGoal };
+                    break;
+            }
+        }
+
         private void btnSort_Click(object sender, EventArgs e)
         {
             // Implement the logic for sorting the data in the DataGridView here
