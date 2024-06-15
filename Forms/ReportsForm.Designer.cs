@@ -45,7 +45,7 @@
             // menuStrip
             //
             ToolStripMenuItem fileMenuItem = new ToolStripMenuItem("File");
-            fileMenuItem.DropDownItems.Add("New", null, NewMenuItem_Click);
+            //fileMenuItem.DropDownItems.Add("New", null, NewMenuItem_Click);
             fileMenuItem.DropDownItems.Add("Open data file", null, OpenDataFileMenuItem_Click);
             fileMenuItem.DropDownItems.Add("Save data file", null, SaveDataFileMenuItem_Click);
             fileMenuItem.DropDownItems.Add("Exit", null, ExitMenuItem_Click);

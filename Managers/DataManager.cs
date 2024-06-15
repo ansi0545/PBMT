@@ -6,6 +6,7 @@ public class DataManager
 {
     private const string Token = "PersonalBudgetManagementTool";
     private string filePath;
+    private List<User> users;
     private double savings;
     private User currentUser;
 
@@ -13,11 +14,16 @@ public class DataManager
     {
         get
         {
-            return LoadDataFromFile<User>();
+            if (users == null)
+            {
+                users = LoadDataFromFile<User>();
+            }
+            return users;
         }
         set
         {
-            SaveData(value);
+            users = value;
+            SaveData(users);
         }
     }
 
@@ -26,6 +32,7 @@ public class DataManager
         set
         {
             filePath = value;
+            users = null;
         }
     }
     private List<T> LoadDataFromFile<T>()
