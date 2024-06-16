@@ -105,11 +105,22 @@ namespace Personal_budget_management_tool.Forms
         {
             // Open an OpenFileDialog to choose the file to open
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Open the selected file
-                Process.Start("notepad.exe", openFileDialog.FileName);
+                try
+                {
+                    using (StreamReader reader = new StreamReader(openFileDialog.FileName))
+                    {
+                        reader.ReadLine(); // Skip the token
+                        var jsonReport = reader.ReadLine();
+                        var report = JsonSerializer.Deserialize<Report>(jsonReport);
+                        dgvReport.DataSource = new List<Report> { report };
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while loading the report from a file: " + ex.Message);
+                }
             }
         }
 
@@ -120,7 +131,7 @@ namespace Personal_budget_management_tool.Forms
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 // Save the data to the selected file
-                WriteReportToFile(saveFileDialog.FileName);
+                WriteReportToFile(saveFileDialog.FileName, true);
             }
         }
 
@@ -130,12 +141,12 @@ namespace Personal_budget_management_tool.Forms
             Application.Exit();
         }
 
-        private void WriteReportToFile(string filePath)
+        private void WriteReportToFile(string filePath, bool append = false)
         {
             try
             {
                 var report = new Report(currentUser.Incomes, currentUser.Expenses, savings, currentUser.SavingsGoal.GoalAmount);
-                using (StreamWriter writer = new StreamWriter(filePath, false))
+                using (StreamWriter writer = new StreamWriter(filePath, append))
                 {
                     writer.WriteLine("PersonalBudgetManagementTool"); // Write the token
                     var jsonReport = JsonSerializer.Serialize(report); // Serialize the report to JSON
