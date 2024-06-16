@@ -140,10 +140,6 @@ namespace Personal_budget_management_tool.Forms
                     writer.WriteLine("PersonalBudgetManagementTool"); // Write the token
                     var jsonReport = JsonSerializer.Serialize(report); // Serialize the report to JSON
                     writer.WriteLine(jsonReport); // Write the JSON report
-                    
-                    // Write Savings and SavingsTotal                        
-                    writer.WriteLine($"Savings: {report.Savings}");
-                    writer.WriteLine($"SavingsTotal: {report.SavingsTotal}");
                 }
             }
             catch (Exception ex)

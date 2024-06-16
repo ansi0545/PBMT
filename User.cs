@@ -22,6 +22,8 @@ namespace Personal_budget_management_tool
 
         internal SavingsGoal SavingsGoal { get; set; }
 
+        internal double Savings { get; set; }
+
         public User()
         {
             Incomes = new List<Income>();
@@ -44,6 +46,7 @@ namespace Personal_budget_management_tool
             Salt = salt;
             Incomes = new List<Income>();
             Expenses = new List<Expense>();
+            double Savings = 0;
         }
 
         private string GenerateSalt()
