@@ -1,4 +1,5 @@
-﻿using Personal_budget_management_tool.Managers;
+﻿using Personal_budget_management_tool.HelperMethods;
+using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool.Forms
 {
@@ -13,7 +14,7 @@ namespace Personal_budget_management_tool.Forms
             InitializeComponent();
             this.budgetApp = budgetApp;
             this.dataManager = dataManager;
-            this.currentUser = currentUser;
+
 
         }
 
@@ -22,21 +23,25 @@ namespace Personal_budget_management_tool.Forms
             string reminderText = txtReminder.Text;
             DateTime reminderDate = dtpDate.Value;
 
-            if (string.IsNullOrEmpty(reminderText))
+            try
             {
-                MessageBox.Show("Please enter a reminder.");
-                return;
+                ErrorHandling.IsValidDescription(reminderText);
+                ErrorHandling.ValidateReminderDate(reminderDate);
+
+                Reminders reminder = new Reminders(reminderText, reminderDate);
+                reminders.Add(reminder);
+
+                // Add the reminder to the ListBox
+                lstReminders.Items.Add(reminderText);
+
+                // Clear the text box and reset the date picker for the next reminder
+                txtReminder.Clear();
+                dtpDate.Value = DateTime.Now;
             }
-
-            Reminders reminder = new Reminders(reminderText, reminderDate);
-            reminders.Add(reminder);
-
-            // Add the reminder to the ListBox
-            lstReminders.Items.Add(reminderText);
-
-            // Clear the text box and reset the date picker for the next reminder
-            txtReminder.Clear();
-            dtpDate.Value = DateTime.Now;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

@@ -38,6 +38,13 @@
                 return false;
             }
         }
+        public static void ValidateReminderDate(DateTime date)
+        {
+            if (date < DateTime.Now)
+            {
+                throw new ArgumentException("Reminder date cannot be in the past.");
+            }
+        }
 
         internal static void ShowErrorMessage(string message)
         {
