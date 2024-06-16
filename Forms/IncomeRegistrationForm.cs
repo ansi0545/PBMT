@@ -8,6 +8,11 @@ namespace Personal_budget_management_tool.Forms
         private BudgetManager budgetApp;
         private List<Income> incomes = new List<Income>();
         private MainForm mainForm;
+        /// <summary>
+        /// Represents a form for registering income in the budget application.
+        /// </summary>
+        /// <param name="budgetApp">The instance of the BudgetManager class.</param>
+        /// <param name="mainForm">The instance of the MainForm class.</param>
         public IncomeRegistrationForm(BudgetManager budgetApp, MainForm mainForm)
         {
             InitializeComponent();
@@ -18,6 +23,12 @@ namespace Personal_budget_management_tool.Forms
 
         }
 
+        /// <summary>
+        /// Event handler for the Save button click event.
+        /// Saves the income details entered by the user and updates the financial summary.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             string amountText = txtAmount.Text;

@@ -19,6 +19,12 @@ namespace Personal_budget_management_tool.Forms
             currentUser = budgetManager.GetCurrentUser();
         }
 
+        /// <summary>
+        /// Event handler for the Register button click event.
+        /// Registers a new user with the provided username and password.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnRegister_Click(object sender, EventArgs e)
         {
             try

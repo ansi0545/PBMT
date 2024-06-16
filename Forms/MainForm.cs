@@ -20,23 +20,43 @@ namespace Personal_budget_management_tool.Forms
             UpdateFinancialSummary(budgetManager.GetFinancialSummary());
         }
 
+        /// <summary>
+        /// Updates the financial summary label with the specified summary text.
+        /// </summary>
+        /// <param name="summary">The summary text to be displayed.</param>
         internal void UpdateFinancialSummary(string summary)
         {
             lblFinancialSummary.Text = summary;
         }
 
+        /// <summary>
+        /// Event handler for the login button click event.
+        /// Opens the login form.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LoginForm loginForm = new LoginForm(budgetManager, dataManager);
             loginForm.Show();
         }
 
+        /// <summary>
+        /// Event handler for the click event of the btnRegister button.
+        /// Opens the RegisterForm and passes the budgetManager object to it.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnRegister_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm(budgetManager);
             registerForm.Show();
         }
 
+        /// <summary>
+        /// Checks if the user is logged in before executing the specified action.
+        /// </summary>
+        /// <param name="action">The action to be executed.</param>
         private void CheckLoginBeforeAction(Action action)
         {
             if (budgetManager.CurrentUser == null)
@@ -49,6 +69,12 @@ namespace Personal_budget_management_tool.Forms
             }
         }
 
+        /// <summary>
+        /// Event handler for the btnIncomeRegistration button click event.
+        /// Opens the IncomeRegistrationForm after checking the login status.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnIncomeRegistration_Click(object sender, EventArgs e)
         {
             CheckLoginBeforeAction(() =>
@@ -58,6 +84,11 @@ namespace Personal_budget_management_tool.Forms
             });
         }
 
+        /// <summary>
+        /// Event handler for the Expense Tracking button click.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnExpenseTracking_Click(object sender, EventArgs e)
         {
             CheckLoginBeforeAction(() =>
@@ -67,6 +98,11 @@ namespace Personal_budget_management_tool.Forms
             });
         }
 
+        /// <summary>
+        /// Event handler for the btnSavingsGoals button click event.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnSavingsGoals_Click(object sender, EventArgs e)
         {
             CheckLoginBeforeAction(() =>
@@ -77,6 +113,11 @@ namespace Personal_budget_management_tool.Forms
             });
         }
 
+        /// <summary>
+        /// Event handler for the "Reports" button click event.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnReports_Click(object sender, EventArgs e)
         {
 
@@ -93,6 +134,11 @@ namespace Personal_budget_management_tool.Forms
             });
         }
 
+        /// <summary>
+        /// Event handler for the btnReminders button click event.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnReminders_Click(object sender, EventArgs e)
         {
             CheckLoginBeforeAction(() =>

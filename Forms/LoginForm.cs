@@ -19,6 +19,14 @@ namespace Personal_budget_management_tool.Forms
             userManager = new UserManager(dataManager);
         }
 
+        /// <summary>
+        /// Event handler for the Submit button click event.
+        /// Validates the username and password, checks if the budget file exists,
+        /// loads data from the budget file, and validates the user's credentials.
+        /// If the login is successful, sets the current user and closes the form.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;

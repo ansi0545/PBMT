@@ -10,6 +10,9 @@ public class DataManager
     private double savings;
     private User currentUser;
 
+    /// <summary>
+    /// Gets or sets the list of users.
+    /// </summary>
     internal List<User> Users
     {
         get
@@ -27,6 +30,9 @@ public class DataManager
         }
     }
 
+    /// <summary>
+    /// Gets or sets the file path for the data manager.
+    /// </summary>
     public string FilePath
     {
         get
@@ -39,13 +45,18 @@ public class DataManager
             users = null;
         }
     }
+    /// <summary>
+    /// Loads data from a file and returns a list of objects of type T.
+    /// </summary>
+    /// <typeparam name="T">The type of objects to be loaded.</typeparam>
+    /// <returns>A list of objects of type T loaded from the file, or null if the file does not exist or an error occurs.</returns>
     internal List<T> LoadDataFromFile<T>()
     {
         var data = new List<T>();
 
         if (!FileExists(filePath))
         {
-            return null;
+            return data;
         }
 
         ErrorHandling.CheckFilePath(filePath);
@@ -76,12 +87,20 @@ public class DataManager
         return data;
     }
 
+    /// <summary>
+    /// Saves the list of reminders to a JSON file.
+    /// </summary>
+    /// <param name="reminders">The list of reminders to save.</param>
     internal void SaveReminders(List<Reminders> reminders)
     {
         string json = JsonSerializer.Serialize(reminders);
         File.WriteAllText("reminders.json", json);
     }
 
+    /// <summary>
+    /// Loads the reminders from a JSON file.
+    /// </summary>
+    /// <returns>A list of reminders.</returns>
     internal List<Reminders> LoadReminders()
     {
         if (!FileExists("reminders.json"))
@@ -93,11 +112,25 @@ public class DataManager
         return JsonSerializer.Deserialize<List<Reminders>>(json);
     }
 
+    /// <summary>
+    /// Checks if a file exists at the specified file path.
+    /// </summary>
+    /// <param name="filePath">The path of the file to check.</param>
+    /// <returns><c>true</c> if the file exists; otherwise, <c>false</c>.</returns>
     public bool FileExists(string filePath)
     {
         return File.Exists(filePath);
     }
 
+    /// <summary>
+    /// Saves the provided data to a file.
+    /// </summary>
+    /// <typeparam name="T">The type of data to be saved.</typeparam>
+    /// <param name="data">The list of data to be saved.</param>
+    /// <remarks>
+    /// This method writes the provided data to a file specified by the <see cref="filePath"/> variable.
+    /// The data is serialized using the <see cref="JsonSerializer"/> class and each item is written as a separate line in the file.
+    /// </remarks>
     internal void SaveData<T>(List<T> data)
     {
         ErrorHandling.CheckFilePath(filePath);

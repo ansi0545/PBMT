@@ -18,6 +18,12 @@ namespace Personal_budget_management_tool.Forms
 
         }
 
+        /// <summary>
+        /// Event handler for the Save button click event.
+        /// Saves the reminder text and date, validates them, creates a new reminder object, adds it to the reminders list, and updates the UI.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             string reminderText = txtReminder.Text;
@@ -42,6 +48,10 @@ namespace Personal_budget_management_tool.Forms
             }
         }
 
+        /// <summary>
+        /// Overrides the base class method to handle the form closing event.
+        /// </summary>
+        /// <param name="e">A <see cref="FormClosingEventArgs"/> that contains the event data.</param>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -55,6 +65,10 @@ namespace Personal_budget_management_tool.Forms
             }
         }
 
+        /// <summary>
+        /// Overrides the base class's OnLoad method and performs additional logic to load reminders.
+        /// </summary>
+        /// <param name="e">An <see cref="EventArgs"/> object that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);

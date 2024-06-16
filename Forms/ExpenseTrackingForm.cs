@@ -16,6 +16,12 @@ namespace Personal_budget_management_tool.Forms
             mainForm.UpdateFinancialSummary(summary);
         }
 
+        /// <summary>
+        /// Event handler for the Save button click event.
+        /// Saves the expense details entered by the user and updates the financial summary.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             string amountText = txtAmount.Text;
@@ -57,6 +63,11 @@ namespace Personal_budget_management_tool.Forms
             cmbCategory.SelectedIndex = -1;
         }
 
+        /// <summary>
+        /// Event handler for the form's Load event.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">An EventArgs object that contains the event data.</param>
         private void ExpenseTrackingForm_Load(object sender, EventArgs e)
         {
 

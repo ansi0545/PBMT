@@ -23,6 +23,9 @@ namespace Personal_budget_management_tool.Forms
             this.currentUser = currentUser;
         }
 
+        /// <summary>
+        /// Represents a user in the system.
+        /// </summary>
         public User CurrentUser
         {
             get { return currentUser; }
@@ -33,6 +36,12 @@ namespace Personal_budget_management_tool.Forms
             }
         }
 
+        /// <summary>
+        /// Event handler for the "Open Datafile" button click.
+        /// Opens a text file containing a report and displays it in a DataGridView.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void toolStripOpenDatafile_Click(object sender, EventArgs e)
         {
             string filePath = Application.StartupPath + "\\Reports.txt";
@@ -65,6 +74,12 @@ namespace Personal_budget_management_tool.Forms
             }
         }
 
+        /// <summary>
+        /// Event handler for the "Save Data File" button click event.
+        /// Saves the report data to a file.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void toolStripSaveDataFile_Click(object sender, EventArgs e)
         {
             string filePath = Application.StartupPath + "\\Reports.txt";
@@ -81,6 +96,9 @@ namespace Personal_budget_management_tool.Forms
             }
         }
 
+        /// <summary>
+        /// Generates a report based on the current user's incomes, expenses, savings, and savings goal.
+        /// </summary>
         private void GenerateReport()
         {
             if (currentUser.SavingsGoal == null)
@@ -99,6 +117,12 @@ namespace Personal_budget_management_tool.Forms
             WriteReportToFile(fileName);
         }
 
+        /// <summary>
+        /// Event handler for the SelectedIndexChanged event of the cmbFilter ComboBox.
+        /// Updates the data source of the dgvReport DataGridView based on the selected filter.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">An EventArgs object that contains the event data.</param>
         private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedFilter = cmbFilter.SelectedItem.ToString();
@@ -117,6 +141,13 @@ namespace Personal_budget_management_tool.Forms
             }
         }
         
+        /// <summary>
+        /// Event handler for the "Open Data File" menu item click event.
+        /// Opens a file dialog to select a data file, reads the contents of the file,
+        /// and displays the report data in a DataGridView control.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void OpenDataFileMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -145,6 +176,12 @@ namespace Personal_budget_management_tool.Forms
             }
         }
 
+        /// <summary>
+        /// Event handler for the SaveDataFileMenuItem click event.
+        /// Saves the report data to a file.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void SaveDataFileMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -154,11 +191,22 @@ namespace Personal_budget_management_tool.Forms
             }
         }
 
+        /// <summary>
+        /// Event handler for the Exit menu item click event.
+        /// Exits the application.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Writes a report to a file.
+        /// </summary>
+        /// <param name="filePath">The path of the file to write the report to.</param>
+        /// <param name="append">Specifies whether to append the report to an existing file (default is false).</param>
         private void WriteReportToFile(string filePath, bool append = false)
         {
             try

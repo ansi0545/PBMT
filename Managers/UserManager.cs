@@ -9,22 +9,35 @@ namespace Personal_budget_management_tool.Managers
         private List<User> Users { get; set; } = new List<User>();
         private DataManager dataManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UserManager"/> class.
+        /// </summary>
+        /// <param name="dataManager">The data manager.</param>
         public UserManager(DataManager dataManager)
         {
             this.dataManager = dataManager ?? throw new ArgumentNullException(nameof(dataManager));
             LoadUsers();
         }
 
+        /// <summary>
+        /// Loads the users from the data manager.
+        /// </summary>
         public void LoadUsers()
         {
             Users = dataManager.Users;
         }
 
+        /// <summary>
+        /// Saves the users to the data manager.
+        /// </summary>
         public void SaveUsers()
         {
             dataManager.Users = Users;
         }
 
+        /// <summary>
+        /// Register a user in the system.
+        /// </summary>
         public User RegisterUser(string username, string password)
         {
             if (GetUser(username) != null)
@@ -44,6 +57,12 @@ namespace Personal_budget_management_tool.Managers
             return newUser;
         }
 
+        /// <summary>
+        /// Validates a user by checking if the provided username and password match the stored user credentials.
+        /// </summary>
+        /// <param name="username">The username of the user to validate.</param>
+        /// <param name="password">The password of the user to validate.</param>
+        /// <returns>True if the user is validated successfully, false otherwise.</returns>
         public bool ValidateUser(string username, string password)
         {
             User user = GetUser(username);
@@ -59,6 +78,9 @@ namespace Personal_budget_management_tool.Managers
             }
         }
 
+        /// <summary>
+        /// Gets a user in the system.
+        /// </summary>
         public User GetUser(string username)
         {
             User user = Users.FirstOrDefault(u => u.Username == username);
@@ -73,6 +95,9 @@ namespace Personal_budget_management_tool.Managers
             return user;
         }
 
+        /// <summary>
+        /// Login a user in the system.
+        /// </summary>
         public User LoginUser(string username, string password)
         {
             User user = GetUser(username);

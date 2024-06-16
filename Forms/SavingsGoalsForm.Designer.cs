@@ -63,12 +63,13 @@
             // 
             // lblTimeframe
             // 
+            lblTimeframe.AutoSize = true;
             lblTimeframe.Location = new Point(12, 79);
             lblTimeframe.Margin = new Padding(4, 0, 4, 0);
             lblTimeframe.Name = "lblTimeframe";
-            lblTimeframe.Size = new Size(120, 20);
+            lblTimeframe.Size = new Size(226, 22);
             lblTimeframe.TabIndex = 2;
-            lblTimeframe.Text = "Timeframe:";
+            lblTimeframe.Text = "Timeframe in days:";
             // 
             // txtTimeframe
             // 
@@ -104,16 +105,14 @@
             lblGoal.Size = new Size(120, 20);
             lblGoal.TabIndex = 6;
             lblGoal.Text = "Goal:";
-            //
-            //lblFinancialSummary
             // 
-            lblFinancialSummary = new Label
-            {
-                Name = "lblFinancialSummary",
-                Location = new Point(10, 10), // Adjust the location as needed
-                Size = new Size(100, 20), // Adjust the size as needed
-                Text = "Financial Summary"
-            };
+            // lblFinancialSummary
+            // 
+            lblFinancialSummary.Location = new Point(0, 0);
+            lblFinancialSummary.Name = "lblFinancialSummary";
+            lblFinancialSummary.Size = new Size(100, 23);
+            lblFinancialSummary.TabIndex = 7;
+            // 
             // SavingsGoalsForm
             // 
             AutoScaleDimensions = new SizeF(12F, 22F);

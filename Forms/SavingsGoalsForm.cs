@@ -19,6 +19,12 @@ namespace Personal_budget_management_tool.Forms
         }
 
 
+        /// <summary>
+        /// Event handler for the Save button click event.
+        /// Saves the user's savings goal and updates the financial summary.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         void btnSave_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtTimeframe.Text, out int days))
@@ -39,6 +45,9 @@ namespace Personal_budget_management_tool.Forms
             mainForm.UpdateFinancialSummary(budgetManager.GetFinancialSummary());
         }
 
+        /// <summary>
+        /// Updates the financial summary label with information about the user's savings goal, balance, and difference.
+        /// </summary>
         public void UpdateFinancialSummary()
         {
             SavingsGoal savingsGoal = budgetManager.GetSavingsGoalForCurrentUser();
