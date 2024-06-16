@@ -29,7 +29,6 @@ namespace Personal_budget_management_tool.Forms
             {
                 dataManager.FilePath = fileName;
                 currentUser = dataManager.Users.FirstOrDefault(); // Assuming you want to load the first user
-                //GenerateReport();
             }
             catch (Exception ex)
             {
@@ -72,7 +71,7 @@ namespace Personal_budget_management_tool.Forms
 
             double totalIncome = currentUser.Incomes.Sum(i => i.Amount);
             double totalExpenses = currentUser.Expenses.Sum(e => e.Amount);
-            double savings = totalIncome - totalExpenses;
+            savings = totalIncome - totalExpenses;
 
             var report = new Report(currentUser.Incomes, currentUser.Expenses, savings, currentUser.SavingsGoal.GoalAmount);
             dgvReport.DataSource = new List<Report> { report };
@@ -118,7 +117,6 @@ namespace Personal_budget_management_tool.Forms
         {
             // Open a SaveFileDialog to choose the location to save the file
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            //saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 // Save the data to the selected file
@@ -142,6 +140,10 @@ namespace Personal_budget_management_tool.Forms
                     writer.WriteLine("PersonalBudgetManagementTool"); // Write the token
                     var jsonReport = JsonSerializer.Serialize(report); // Serialize the report to JSON
                     writer.WriteLine(jsonReport); // Write the JSON report
+                    
+                    // Write Savings and SavingsTotal                        
+                    writer.WriteLine($"Savings: {report.Savings}");
+                    writer.WriteLine($"SavingsTotal: {report.SavingsTotal}");
                 }
             }
             catch (Exception ex)
