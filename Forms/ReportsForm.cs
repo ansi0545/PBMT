@@ -12,6 +12,7 @@ namespace Personal_budget_management_tool.Forms
         private User currentUser;
         private double savings;
         private DataManager dataManager;
+        private const string Token = "PersonalBudgetManagementTool";
         string fileName = Application.StartupPath + "\\Reports.txt";
 
         public ReportsForm(BudgetManager budgetApp, User currentUser)
@@ -112,6 +113,12 @@ namespace Personal_budget_management_tool.Forms
                     using (StreamReader reader = new StreamReader(openFileDialog.FileName))
                     {
                         reader.ReadLine(); // Skip the token
+                        var fileUserId = reader.ReadLine(); // Read the user identifier
+                        if (fileUserId != currentUser.Username)
+                        {
+                            MessageBox.Show("You are not allowed to open this file.");
+                            return;
+                        }
                         var jsonReport = reader.ReadLine();
                         var report = JsonSerializer.Deserialize<Report>(jsonReport);
                         dgvReport.DataSource = new List<Report> { report };
@@ -148,7 +155,8 @@ namespace Personal_budget_management_tool.Forms
                 var report = new Report(currentUser.Incomes, currentUser.Expenses, savings, currentUser.SavingsGoal.GoalAmount);
                 using (StreamWriter writer = new StreamWriter(filePath, append))
                 {
-                    writer.WriteLine("PersonalBudgetManagementTool"); // Write the token
+                    writer.WriteLine(Token); // Write the token
+                    writer.WriteLine(currentUser.Username); // Write the user identifier
                     var jsonReport = JsonSerializer.Serialize(report); // Serialize the report to JSON
                     writer.WriteLine(jsonReport); // Write the JSON report
                 }
