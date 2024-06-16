@@ -66,6 +66,23 @@ public class DataManager
         return data;
     }
 
+    internal void SaveReminders(List<Reminders> reminders)
+    {
+        string json = JsonSerializer.Serialize(reminders);
+        File.WriteAllText("reminders.json", json);
+    }
+
+    internal List<Reminders> LoadReminders()
+    {
+        if (!File.Exists("reminders.json"))
+        {
+            return new List<Reminders>();
+        }
+
+        string json = File.ReadAllText("reminders.json");
+        return JsonSerializer.Deserialize<List<Reminders>>(json);
+    }
+
     private void SaveData<T>(List<T> data)
     {
         ErrorHandling.CheckFilePath(filePath);

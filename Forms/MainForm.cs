@@ -97,11 +97,10 @@ namespace Personal_budget_management_tool.Forms
         {
             CheckLoginBeforeAction(() =>
             {
-                RemindersForm remindersForm = new RemindersForm(budgetManager);
+                RemindersForm remindersForm = new RemindersForm(budgetManager, dataManager);
                 remindersForm.Show();
             });
         }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
 

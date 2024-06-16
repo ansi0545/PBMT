@@ -7,6 +7,7 @@
         private Label lblDate;
         private DateTimePicker dtpDate;
         private Button btnSave;
+        private ListBox lstReminders;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -34,6 +35,7 @@
         private void InitializeComponent()
         {
             lblReminder = new Label();
+            lstReminders = new ListBox();
             txtReminder = new TextBox();
             lblDate = new Label();
             dtpDate = new DateTimePicker();
@@ -47,6 +49,13 @@
             lblReminder.Size = new Size(100, 23);
             lblReminder.TabIndex = 0;
             lblReminder.Text = "Reminder:";
+            //
+            // lstReminders
+            //
+            lstReminders.Location = new Point(10, 200);
+            lstReminders.Name = "lstReminders";
+            lstReminders.Size = new Size(243, 200);
+            lstReminders.TabIndex = 5;
             // 
             // txtReminder
             // 
@@ -85,6 +94,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(lblReminder);
+            Controls.Add(lstReminders);
             Controls.Add(txtReminder);
             Controls.Add(lblDate);
             Controls.Add(dtpDate);
