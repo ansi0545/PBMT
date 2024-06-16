@@ -1,7 +1,6 @@
 ﻿
-
-using System.Diagnostics;
 using System.Text.Json;
+using Personal_budget_management_tool.HelperMethods;
 using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool.Forms
@@ -22,6 +21,16 @@ namespace Personal_budget_management_tool.Forms
             dataManager = new DataManager();
             this.budgetApp = budgetApp;
             this.currentUser = currentUser;
+        }
+
+        public User CurrentUser
+        {
+            get { return currentUser; }
+            set
+            {
+                ErrorHandling.ValidateUser(value);
+                currentUser = value;
+            }
         }
 
         private void toolStripOpenDatafile_Click(object sender, EventArgs e)

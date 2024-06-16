@@ -14,6 +14,14 @@
                 return false;
             }
         }
+
+        public static void ValidateUser(User user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentException("User cannot be null.");
+            }
+        }
         internal static bool IsPositiveNumber(double number)
         {
             if (number > 0)
