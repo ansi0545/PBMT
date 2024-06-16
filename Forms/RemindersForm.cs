@@ -31,10 +31,8 @@ namespace Personal_budget_management_tool.Forms
                 Reminders reminder = new Reminders(reminderText, reminderDate);
                 reminders.Add(reminder);
 
-                // Add the reminder to the ListBox
                 lstReminders.Items.Add(reminderText);
 
-                // Clear the text box and reset the date picker for the next reminder
                 txtReminder.Clear();
                 dtpDate.Value = DateTime.Now;
             }
@@ -64,7 +62,6 @@ namespace Personal_budget_management_tool.Forms
             {
                 reminders = dataManager.LoadReminders();
 
-                // Load the reminders into the ListBox
                 foreach (var reminder in reminders)
                 {
                     lstReminders.Items.Add(reminder.Text);

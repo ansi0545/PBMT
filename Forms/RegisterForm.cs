@@ -13,8 +13,8 @@ namespace Personal_budget_management_tool.Forms
         public RegisterForm(BudgetManager manager)
         {
             InitializeComponent();
-            dataManager = new DataManager { FilePath = Application.StartupPath + "\\Budget.txt" }; // Initialize DataManager with file path
-            userManager = new UserManager(dataManager); // Initialize userManager with DataManager instance
+            dataManager = new DataManager { FilePath = Application.StartupPath + "\\Budget.txt" }; 
+            userManager = new UserManager(dataManager);
             budgetManager = manager;
             currentUser = budgetManager.GetCurrentUser();
         }
@@ -32,19 +32,15 @@ namespace Personal_budget_management_tool.Forms
 
                 if (!dataManager.FileExists(dataManager.FilePath))
                 {
-                    // If the file does not exist, create it with an empty list of users
                     dataManager.SaveData(new List<User>());
                 }
 
-                // Attempt to register the user
                 User newUser = userManager.RegisterUser(newUsername, newPassword);
 
-                // If registration succeeds, show a success message
                 MessageBox.Show($"User {newUser.Username} registered successfully.");
             }
             catch (Exception ex)
             {
-                // If an error occurs, show an error message
                 MessageBox.Show(ex.Message);
             }
         }

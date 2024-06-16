@@ -16,12 +16,6 @@ namespace Personal_budget_management_tool.Forms
             mainForm.UpdateFinancialSummary(summary);
         }
 
-        // public ExpenseTrackingForm(BudgetManager budgetManager, MainForm mainForm) : this(budgetManager)
-        // {
-        //     this.mainForm = mainForm;
-
-        // }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             string amountText = txtAmount.Text;
@@ -32,20 +26,17 @@ namespace Personal_budget_management_tool.Forms
             {
                 return;
             }
-
       
             if (!ErrorHandling.IsValidDescription(description))
             {
                 return;
             }
 
-      
             if (cmbCategory.SelectedItem == null)
             {
                 ErrorHandling.ShowErrorMessage("Please select a category.");
                 return;
             }
-
             
             Expense newExpense = new Expense
             {
@@ -54,15 +45,12 @@ namespace Personal_budget_management_tool.Forms
                 Description = description,
                 Category = (Category)cmbCategory.SelectedItem
             };
-
            
             budgetApp.AddExpense(newExpense);
 
-            // Update the financial summary in MainForm
-            string summary = budgetApp.GetFinancialSummary(); // Replace this with your actual method to get the summary
+            string summary = budgetApp.GetFinancialSummary();
             mainForm.UpdateFinancialSummary(summary);
 
-            // Clear the form
             dtpDate.Value = DateTime.Now;
             txtAmount.Clear();
             txtDescription.Clear();

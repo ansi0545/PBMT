@@ -7,7 +7,6 @@ namespace Personal_budget_management_tool.Forms
 
     public partial class SavingsGoalsForm : Form
     {
-        //private UserManager userManager;
         private MainForm mainForm;
 
         private BudgetManager budgetManager;
@@ -16,7 +15,6 @@ namespace Personal_budget_management_tool.Forms
         {
             InitializeComponent();
             this.budgetManager = budgetManager;
-            //userManager = new UserManager(dataManager);
             this.mainForm = mainForm;
         }
 

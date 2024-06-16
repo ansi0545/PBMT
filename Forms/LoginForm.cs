@@ -29,7 +29,6 @@ namespace Personal_budget_management_tool.Forms
                 return;
             }
 
-            // Check if the Budget.txt file exists
             if (!dataManager.FileExists("Budget.txt"))
             {
                 MessageBox.Show("Budget file does not exist. Please create a budget first.");

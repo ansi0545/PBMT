@@ -6,12 +6,18 @@
         private double amount;
         private string description;
 
+        /// <summary>
+        /// Gets or sets the date of the income.
+        /// </summary>
         public DateTime Date
         {
             get { return date; }
             set { date = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the amount of income.
+        /// </summary>
         public double Amount
         {
             get { return amount; }
@@ -24,19 +30,9 @@
             }
         }
 
-        public static bool IsPositiveNumber(double number)
-        {
-            if (number > 0)
-            {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show("Please enter a valid positive number.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
+        /// <summary>
+        /// Gets or sets the description of the income.
+        /// </summary>
         public string Description
         {
             get { return description; }

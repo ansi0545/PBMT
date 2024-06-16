@@ -23,6 +23,9 @@ namespace Personal_budget_management_tool
         Veterinarycosts
 
     }
+    /// <summary>
+    /// Represents an expense.
+    /// </summary>
     internal class Expense
     {
         private Category category;
@@ -30,12 +33,18 @@ namespace Personal_budget_management_tool
         private DateTime date;
         private string description;
 
+        /// <summary>
+        /// Gets or sets the date of the expense.
+        /// </summary>
         public DateTime Date
         {
             get { return date; }
             set { date = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the amount of the expense.
+        /// </summary>
         public double Amount
         {
             get { return amount; }
@@ -48,6 +57,9 @@ namespace Personal_budget_management_tool
             }
         }
 
+        /// <summary>
+        /// Gets or sets the description of the expense.
+        /// </summary>
         public string Description
         {
             get { return description; }
@@ -60,14 +72,15 @@ namespace Personal_budget_management_tool
             }
         }
 
+        /// <summary>
+        /// Gets or sets the category of the expense.
+        /// </summary>
         public Category Category
         {
             get { return category; }
             set
             {
                 category = value;
-
-
             }
         }
     }

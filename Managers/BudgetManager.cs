@@ -108,23 +108,15 @@
 
         internal SavingsGoal GetSavingsGoalForCurrentUser()
         {
-            // if (CurrentUser == null)
-            // {
-            //     // Log an error or throw an exception if appropriate
-            //     return null;
-            // }
-
             return CurrentUser?.SavingsGoal;
         }
 
-        internal Report GenerateReport()
-        {
-            double savings = CurrentUser.SavingsGoal?.Savings ?? 0;
-            double goalAmount = CurrentUser.SavingsGoal?.GoalAmount ?? 0;
-            return new Report(CurrentUser.Incomes, CurrentUser.Expenses, savings, goalAmount);
-        }
-
-        // Add the GetCurrentUser method
+        // internal Report GenerateReport()
+        // {
+        //     double savings = CurrentUser.SavingsGoal?.Savings ?? 0;
+        //     double goalAmount = CurrentUser.SavingsGoal?.GoalAmount ?? 0;
+        //     return new Report(CurrentUser.Incomes, CurrentUser.Expenses, savings, goalAmount);
+        // }
         internal User GetCurrentUser()
         {
             return currentUser;

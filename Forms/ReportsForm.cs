@@ -35,10 +35,8 @@ namespace Personal_budget_management_tool.Forms
 
         private void toolStripOpenDatafile_Click(object sender, EventArgs e)
         {
-            // Specify the file path
             string filePath = Application.StartupPath + "\\Reports.txt";
 
-            // Check if the file exists
             if (!File.Exists(filePath))
             {
                 MessageBox.Show("The file does not exist.");
@@ -49,8 +47,8 @@ namespace Personal_budget_management_tool.Forms
             {
                 using (StreamReader reader = new StreamReader(filePath))
                 {
-                    reader.ReadLine(); // Skip the token
-                    var fileUserId = reader.ReadLine(); // Read the user identifier
+                    reader.ReadLine();
+                    var fileUserId = reader.ReadLine();
                     if (fileUserId != currentUser.Username)
                     {
                         MessageBox.Show("You are not allowed to open this file.");
@@ -69,10 +67,7 @@ namespace Personal_budget_management_tool.Forms
 
         private void toolStripSaveDataFile_Click(object sender, EventArgs e)
         {
-            // Specify the file path
             string filePath = Application.StartupPath + "\\Reports.txt";
-
-            // Save the data to the specified file
             WriteReportToFile(filePath, true);
         }
 
@@ -121,14 +116,9 @@ namespace Personal_budget_management_tool.Forms
                     break;
             }
         }
-        private void NewMenuItem_Click(object sender, EventArgs e)
-        {
-            // Code to create a new report
-        }
-
+        
         private void OpenDataFileMenuItem_Click(object sender, EventArgs e)
         {
-            // Open an OpenFileDialog to choose the file to open
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -136,8 +126,8 @@ namespace Personal_budget_management_tool.Forms
                 {
                     using (StreamReader reader = new StreamReader(openFileDialog.FileName))
                     {
-                        reader.ReadLine(); // Skip the token
-                        var fileUserId = reader.ReadLine(); // Read the user identifier
+                        reader.ReadLine();
+                        var fileUserId = reader.ReadLine();
                         if (fileUserId != currentUser.Username)
                         {
                             MessageBox.Show("You are not allowed to open this file.");
@@ -157,18 +147,15 @@ namespace Personal_budget_management_tool.Forms
 
         private void SaveDataFileMenuItem_Click(object sender, EventArgs e)
         {
-            // Open a SaveFileDialog to choose the location to save the file
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Save the data to the selected file
                 WriteReportToFile(saveFileDialog.FileName, true);
             }
         }
 
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
-            // Code to exit the application
             Application.Exit();
         }
 
@@ -179,10 +166,10 @@ namespace Personal_budget_management_tool.Forms
                 var report = new Report(currentUser.Incomes, currentUser.Expenses, savings, currentUser.SavingsGoal.GoalAmount);
                 using (StreamWriter writer = new StreamWriter(filePath, append))
                 {
-                    writer.WriteLine(Token); // Write the token
-                    writer.WriteLine(currentUser.Username); // Write the user identifier
-                    var jsonReport = JsonSerializer.Serialize(report); // Serialize the report to JSON
-                    writer.WriteLine(jsonReport); // Write the JSON report
+                    writer.WriteLine(Token);
+                    writer.WriteLine(currentUser.Username);
+                    var jsonReport = JsonSerializer.Serialize(report);
+                    writer.WriteLine(jsonReport);
                 }
             }
             catch (Exception ex)
