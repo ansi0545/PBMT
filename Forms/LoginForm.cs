@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Personal_budget_management_tool.HelperMethods;
 using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool.Forms
@@ -22,6 +23,24 @@ namespace Personal_budget_management_tool.Forms
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
+
+            if (!ErrorHandling.IsValidDescription(username) || !ErrorHandling.IsValidDescription(password))
+            {
+                return;
+            }
+
+            // Check if the Budget.txt file exists
+            if (!dataManager.FileExists("Budget.txt"))
+            {
+                MessageBox.Show("Budget file does not exist. Please create a budget first.");
+                return;
+            }
+
+            dataManager.FilePath = "Budget.txt";
+            if (dataManager.LoadDataFromFile<object>() == null)
+            {
+                return;
+            }
 
             if (userManager.ValidateUser(username, password))
             {

@@ -29,15 +29,24 @@ public class DataManager
 
     public string FilePath
     {
+        get
+        {
+            return filePath;
+        }
         set
         {
             filePath = value;
             users = null;
         }
     }
-    private List<T> LoadDataFromFile<T>()
+    internal List<T> LoadDataFromFile<T>()
     {
         var data = new List<T>();
+
+        if (!FileExists(filePath))
+        {
+            return null;
+        }
 
         ErrorHandling.CheckFilePath(filePath);
 
@@ -61,6 +70,7 @@ public class DataManager
         catch (Exception ex)
         {
             ErrorHandling.ShowErrorMessage($"An error occurred while loading data: {ex.Message}");
+            return null;
         }
 
         return data;
@@ -74,7 +84,7 @@ public class DataManager
 
     internal List<Reminders> LoadReminders()
     {
-        if (!File.Exists("reminders.json"))
+        if (!FileExists("reminders.json"))
         {
             return new List<Reminders>();
         }
@@ -83,7 +93,12 @@ public class DataManager
         return JsonSerializer.Deserialize<List<Reminders>>(json);
     }
 
-    private void SaveData<T>(List<T> data)
+    public bool FileExists(string filePath)
+    {
+        return File.Exists(filePath);
+    }
+
+    internal void SaveData<T>(List<T> data)
     {
         ErrorHandling.CheckFilePath(filePath);
 

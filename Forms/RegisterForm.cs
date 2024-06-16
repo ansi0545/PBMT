@@ -1,4 +1,5 @@
-﻿using Personal_budget_management_tool.Managers;
+﻿using Personal_budget_management_tool.HelperMethods;
+using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool.Forms
 {
@@ -20,11 +21,21 @@ namespace Personal_budget_management_tool.Forms
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            string newUsername = txtNewUsername.Text;
-            string newPassword = txtNewPassword.Text;
-
             try
             {
+                string newUsername = txtNewUsername.Text;
+                string newPassword = txtNewPassword.Text;
+
+
+                ErrorHandling.IsValidDescription(newUsername);
+                ErrorHandling.IsValidDescription(newPassword);
+
+                if (!dataManager.FileExists(dataManager.FilePath))
+                {
+                    // If the file does not exist, create it with an empty list of users
+                    dataManager.SaveData(new List<User>());
+                }
+
                 // Attempt to register the user
                 User newUser = userManager.RegisterUser(newUsername, newPassword);
 
@@ -33,7 +44,7 @@ namespace Personal_budget_management_tool.Forms
             }
             catch (Exception ex)
             {
-                // If registration fails, show an error message
+                // If an error occurs, show an error message
                 MessageBox.Show(ex.Message);
             }
         }
