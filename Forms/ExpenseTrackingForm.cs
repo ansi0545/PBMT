@@ -1,4 +1,5 @@
-﻿using Personal_budget_management_tool.Managers;
+﻿using Personal_budget_management_tool.HelperMethods;
+using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool.Forms
 {
@@ -18,28 +19,48 @@ namespace Personal_budget_management_tool.Forms
         // public ExpenseTrackingForm(BudgetManager budgetManager, MainForm mainForm) : this(budgetManager)
         // {
         //     this.mainForm = mainForm;
-            
+
         // }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Create a new Expense object
+            string amountText = txtAmount.Text;
+            string description = txtDescription.Text;
+
+          
+            if (!ErrorHandling.IsPositiveNumber(amountText, out double amount))
+            {
+                return;
+            }
+
+      
+            if (!ErrorHandling.IsValidDescription(description))
+            {
+                return;
+            }
+
+      
+            if (cmbCategory.SelectedItem == null)
+            {
+                ErrorHandling.ShowErrorMessage("Please select a category.");
+                return;
+            }
+
+            
             Expense newExpense = new Expense
             {
                 Date = dtpDate.Value,
-                Amount = double.Parse(txtAmount.Text),
-                Description = txtDescription.Text,
+                Amount = amount,
+                Description = description,
                 Category = (Category)cmbCategory.SelectedItem
             };
 
-            // Add the new expense to the BudgetManager
+           
             budgetApp.AddExpense(newExpense);
-
 
             // Update the financial summary in MainForm
             string summary = budgetApp.GetFinancialSummary(); // Replace this with your actual method to get the summary
             mainForm.UpdateFinancialSummary(summary);
-
 
             // Clear the form
             dtpDate.Value = DateTime.Now;
@@ -50,7 +71,7 @@ namespace Personal_budget_management_tool.Forms
 
         private void ExpenseTrackingForm_Load(object sender, EventArgs e)
         {
-           
+
             foreach (var category in Enum.GetValues(typeof(Category)))
             {
                 cmbCategory.Items.Add(category);

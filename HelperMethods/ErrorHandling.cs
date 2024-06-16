@@ -62,6 +62,19 @@
             }
         }
 
+        public static bool IsValidAmount(string amount)
+        {
+            if (double.TryParse(amount, out double parsedAmount) && parsedAmount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid positive number for the amount.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
     }
 
 
