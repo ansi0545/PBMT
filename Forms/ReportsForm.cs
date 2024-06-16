@@ -1,6 +1,7 @@
 ﻿
 
 using System.Diagnostics;
+using System.Text.Json;
 using Personal_budget_management_tool.Managers;
 
 namespace Personal_budget_management_tool.Forms
@@ -20,7 +21,6 @@ namespace Personal_budget_management_tool.Forms
             dataManager = new DataManager();
             this.budgetApp = budgetApp;
             this.currentUser = currentUser;
-            GenerateReport();
         }
 
         private void toolStripOpenDatafile_Click(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace Personal_budget_management_tool.Forms
             {
                 dataManager.FilePath = fileName;
                 currentUser = dataManager.Users.FirstOrDefault(); // Assuming you want to load the first user
-                GenerateReport();
+                //GenerateReport();
             }
             catch (Exception ex)
             {
@@ -43,6 +43,7 @@ namespace Personal_budget_management_tool.Forms
             {
                 dataManager.FilePath = fileName;
                 dataManager.Users = new List<User> { currentUser };
+                GenerateReport();
                 MessageBox.Show("Report saved successfully.");
             }
             catch (Exception ex)
@@ -51,7 +52,7 @@ namespace Personal_budget_management_tool.Forms
             }
         }
 
-        
+
         private void toolStripExit_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.OKCancel);
@@ -136,12 +137,11 @@ namespace Personal_budget_management_tool.Forms
             try
             {
                 var report = new Report(currentUser.Incomes, currentUser.Expenses, savings, currentUser.SavingsGoal.GoalAmount);
-                using (StreamWriter writer = new StreamWriter("report.txt", false))
+                using (StreamWriter writer = new StreamWriter(filePath, false))
                 {
-                    writer.WriteLine("Income Total: " + report.IncomeTotal);
-                    writer.WriteLine("Expense Total: " + report.ExpenseTotal);
-                    writer.WriteLine("Savings Total: " + report.SavingsTotal);
-                    writer.WriteLine("Savings Difference: " + report.SavingsDifference);
+                    writer.WriteLine("PersonalBudgetManagementTool"); // Write the token
+                    var jsonReport = JsonSerializer.Serialize(report); // Serialize the report to JSON
+                    writer.WriteLine(jsonReport); // Write the JSON report
                 }
             }
             catch (Exception ex)
