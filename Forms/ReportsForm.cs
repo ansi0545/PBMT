@@ -26,30 +26,45 @@ namespace Personal_budget_management_tool.Forms
 
         private void toolStripOpenDatafile_Click(object sender, EventArgs e)
         {
+            // Specify the file path
+            string filePath = Application.StartupPath + "\\Reports.txt";
+
+            // Check if the file exists
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("The file does not exist.");
+                return;
+            }
+
             try
             {
-                dataManager.FilePath = fileName;
-                currentUser = dataManager.Users.FirstOrDefault(); // Assuming you want to load the first user
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    reader.ReadLine(); // Skip the token
+                    var fileUserId = reader.ReadLine(); // Read the user identifier
+                    if (fileUserId != currentUser.Username)
+                    {
+                        MessageBox.Show("You are not allowed to open this file.");
+                        return;
+                    }
+                    var jsonReport = reader.ReadLine();
+                    var report = JsonSerializer.Deserialize<Report>(jsonReport);
+                    dgvReport.DataSource = new List<Report> { report };
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to open file: {ex.Message}");
+                MessageBox.Show("An error occurred while loading the report from a file: " + ex.Message);
             }
         }
 
         private void toolStripSaveDataFile_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dataManager.FilePath = fileName;
-                dataManager.Users = new List<User> { currentUser };
-                GenerateReport();
-                MessageBox.Show("Report saved successfully.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to save file: {ex.Message}");
-            }
+            // Specify the file path
+            string filePath = Application.StartupPath + "\\Reports.txt";
+
+            // Save the data to the specified file
+            WriteReportToFile(filePath, true);
         }
 
 
